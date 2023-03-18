@@ -4,12 +4,12 @@ plugins {
 }
 
 android {
-    namespace 'com.example.moviessearch'
+    namespace 'com.megamovies.moviessearch'
     compileSdk 33
 
     defaultConfig {
-        applicationId "com.example.moviessearch"
-        minSdk 24
+        applicationId "com.megamovies.moviessearch"
+        minSdk 22
         targetSdk 33
         versionCode 1
         versionName "1.0"

@@ -1,4 +1,4 @@
-package com.example.moviessearch
+package com.megamovies.moviessearch
 
 import org.junit.Test
 
