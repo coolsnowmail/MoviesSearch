@@ -6,6 +6,20 @@
     android:layout_height="match_parent"
     tools:context=".MainActivity">
 
+    <TextView
+        android:id="@+id/textView2"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/res_text"
+        android:textAlignment="center"
+        android:textColor="@color/purple_200"
+        android:textSize="46sp"
+        app:layout_constraintBottom_toTopOf="@+id/textView"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.25" />
+
     <ImageView
         android:id="@+id/imageView"
         android:layout_width="wrap_content"
@@ -22,13 +36,12 @@
         android:id="@+id/textView"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="20dp"
         android:maxLines="3"
         android:shadowColor="#000000"
         android:shadowDx="10"
         android:shadowDy="10"
         android:shadowRadius="10"
-        android:text="Успех это твой долг, обязательность и ответсвенность..."
+        android:text="@string/motiving_text"
         android:textAlignment="center"
         android:textColor="#DC1F201F"
         android:textSize="13pt"
