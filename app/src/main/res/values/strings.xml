@@ -2,4 +2,5 @@
     <string name="app_name">MoviesSearch</string>
     <string name="res_text">Текст из ресурсов</string>
     <string name="motiving_text">Успех это твой долг, обязательность и ответсвенность...</string>
+    <string name="button">Button</string>
 </resources>
