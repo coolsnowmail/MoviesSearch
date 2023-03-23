@@ -18,7 +18,13 @@ class MainActivity : AppCompatActivity() {
         // setContentView(R.layout.activity_main) // default method
         binding = ActivityMainBinding.inflate(layoutInflater)
         setContentView(binding.root)
-        binding.button.setOnClickListener({ Toast.makeText(this, "chingbxfgfgdf", Toast.LENGTH_SHORT).show() })
+        binding.button.setOnClickListener {
+            Toast.makeText(
+                this,
+                "ЧИН ЧИНАРЕМ",
+                Toast.LENGTH_SHORT
+            ).show()
+        }
 
         //viewBinding
 //        binding = ActivityMainBinding.inflate(layoutInflater)
@@ -27,8 +33,8 @@ class MainActivity : AppCompatActivity() {
 //        binding.button.text = "Hallo and welcome"
     }
     // default method
-    fun onClickToast(view: View) {
-        Toast.makeText(this, "chin", Toast.LENGTH_SHORT).show()
-    }
+//    fun onClickToast(view: View) {
+//        Toast.makeText(this, "chin", Toast.LENGTH_SHORT).show()
+//    }
     // default method don't forget to add onClick attribute on button or whatever
 }
