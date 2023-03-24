@@ -16,9 +16,10 @@
         android:textSize="46sp"
         app:layout_constraintBottom_toTopOf="@+id/imageView"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.5"
+        app:layout_constraintHorizontal_bias="0.473"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_chainStyle="spread" />
 
     <ImageView
         android:id="@+id/imageView"
@@ -47,44 +48,24 @@
         android:textAlignment="center"
         android:textColor="#DC1F201F"
         android:textSize="13pt"
-        app:layout_constraintBottom_toTopOf="@+id/button"
+        app:layout_constraintBottom_toTopOf="@+id/appCompatButton2"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.5"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/imageView" />
 
-    <androidx.appcompat.widget.AppCompatImageButton
-        android:id="@+id/button"
-        android:layout_width="48dp"
+
+
+    <Button
+        android:id="@+id/appCompatButton2"
+        android:layout_width="79dp"
         android:layout_height="48dp"
-        android:background="@drawable/baseline_add_box_24"
-        android:contentDescription="@string/button"
-        android:text="@string/button"
-        android:textColor="#757575"
-        app:layout_constraintBottom_toTopOf="@+id/appCompatButton"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/textView" />
-
-    <androidx.appcompat.widget.AppCompatButton
-        android:id="@+id/appCompatButton"
-        android:layout_width="100dp"
-        android:layout_height="100dp"
-        android:background="@drawable/select_drawable"
-        android:contentDescription="@string/button"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/button" />
-
-    <androidx.appcompat.widget.AppCompatButton
-        android:layout_width="100dp"
-        android:layout_height="100dp"
         android:background="@drawable/reple_test"
-        android:contentDescription="@android:string/cancel"
+        android:text="@string/button"
+        android:textColor="#000000"
         app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toStartOf="@+id/appCompatButton"
+        app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/textView" />
+        app:layout_constraintTop_toBottomOf="@+id/textView"/>
 
 </androidx.constraintlayout.widget.ConstraintLayout>

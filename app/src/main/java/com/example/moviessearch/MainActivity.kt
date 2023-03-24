@@ -18,7 +18,7 @@ class MainActivity : AppCompatActivity() {
         // setContentView(R.layout.activity_main) // default method
         binding = ActivityMainBinding.inflate(layoutInflater)
         setContentView(binding.root)
-        binding.button.setOnClickListener {
+        binding.appCompatButton2?.setOnClickListener {
             Toast.makeText(
                 this,
                 "ЧИН ЧИНАРЕМ",
