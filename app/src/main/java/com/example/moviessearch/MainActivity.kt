@@ -15,6 +15,10 @@ class MainActivity : AppCompatActivity() {
         supportActionBar?.title = "MoviesSearcher"
         binding = ActivityMainBinding.inflate(layoutInflater)
         setContentView(binding.root)
+        buttonInit()
+    }
+
+    private fun buttonInit() {
         binding.button1?.setOnClickListener{makeText(this, binding.button1.text, Toast.LENGTH_SHORT).show()}
         binding.button2?.setOnClickListener{makeText(this, binding.button2.text, Toast.LENGTH_SHORT).show()}
         binding.button3?.setOnClickListener{makeText(this, binding.button3.text, Toast.LENGTH_SHORT).show()}
