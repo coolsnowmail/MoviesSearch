@@ -20,41 +20,47 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/linerLayout" />
 
-    <LinearLayout
+    <androidx.cardview.widget.CardView
         android:id="@+id/linerLayout"
         android:layout_width="match_parent"
         android:layout_height="165dp"
-        android:background="#FACECE"
-        android:orientation="horizontal"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent">
+        app:layout_constraintTop_toTopOf="parent"
+        app:cardCornerRadius="15dp"
+        android:layout_margin="10dp">
 
-        <ImageView
-            android:id="@+id/joker"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_weight="1"
-            android:scaleType="centerCrop"
-            app:srcCompat="@drawable/joker" />
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:orientation="horizontal">
 
-        <ImageView
-            android:id="@+id/wick_jon"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_weight="1"
-            android:scaleType="centerCrop"
-            app:srcCompat="@drawable/wick_jon" />
+            <ImageView
+                android:id="@+id/joker"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:scaleType="centerCrop"
+                app:srcCompat="@drawable/joker" />
 
-        <ImageView
-            android:id="@+id/spiderman"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_weight="1"
-            android:scaleType="centerCrop"
-            app:srcCompat="@drawable/spiderman" />
+            <ImageView
+                android:id="@+id/wick_jon"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:scaleType="centerCrop"
+                app:srcCompat="@drawable/wick_jon" />
 
-    </LinearLayout>
+            <ImageView
+                android:id="@+id/spiderman"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:scaleType="centerCrop"
+                app:srcCompat="@drawable/spiderman" />
+
+        </LinearLayout>
+    </androidx.cardview.widget.CardView>
 
     <LinearLayout
         android:layout_width="0dp"
@@ -62,42 +68,52 @@
         android:layout_marginHorizontal="40dp"
         android:layout_marginTop="45dp"
         android:layout_marginBottom="45dp"
-        android:background="@android:color/holo_orange_light"
+        android:background="@drawable/corner_background"
         android:orientation="vertical"
         app:layout_constraintBottom_toTopOf="@+id/frameLayout2"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/linerLayout">
 
-        <Button
+        <androidx.appcompat.widget.AppCompatButton
             android:id="@+id/button5"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="Button" />
+            android:text="@string/btn5"
+            android:background="?selectableItemBackgroundBorderless"
+            android:textColor="@android:color/white" />
 
-        <Button
+        <androidx.appcompat.widget.AppCompatButton
             android:id="@+id/button4"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="Button" />
+            android:text="@string/btn4"
+            android:background="?selectableItemBackgroundBorderless"
+            android:textColor="@android:color/white"/>
 
-        <Button
+        <androidx.appcompat.widget.AppCompatButton
             android:id="@+id/button3"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="Button" />
+            android:text="@string/btn3"
+            android:background="?selectableItemBackgroundBorderless"
+            android:textColor="@android:color/white" />
 
-        <Button
+        <androidx.appcompat.widget.AppCompatButton
             android:id="@+id/button2"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="Button" />
+            android:text="@string/btn2"
+            android:background="?selectableItemBackgroundBorderless"
+            android:textColor="@android:color/white" />
 
-        <Button
-            android:id="@+id/button"
+        <androidx.appcompat.widget.AppCompatButton
+            android:id="@+id/button1"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="Button" />
+            android:text="@string/btn1"
+            android:background="?selectableItemBackgroundBorderless"
+            android:textColor="@android:color/white" />
     </LinearLayout>
 
     <FrameLayout

@@ -1,4 +1,9 @@
 <resources>
     <string name="app_name">MoviesSearch</string>
+    <string name="btn1">НАСТРОЙКИ</string>
+    <string name="btn2">ПОДБОРКИ</string>
+    <string name="btn3">СМОТРЕТЬ ПОЗЖЕ</string>
+    <string name="btn4">ИЗБРАННОЕ</string>
+    <string name="btn5">МЕНЮ</string>
     <string name="where_got_posters">Картинки взяты с movieposters.com</string>
 </resources>
