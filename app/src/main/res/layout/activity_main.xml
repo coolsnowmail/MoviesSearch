@@ -6,73 +6,20 @@
     android:layout_height="match_parent"
     tools:context=".MainActivity">
 
-    <TextView
-        android:id="@+id/textView2"
-        android:layout_width="wrap_content"
+    <com.google.android.material.appbar.AppBarLayout
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="@string/res_text"
-        android:textAlignment="center"
-        android:textColor="@color/purple_200"
-        android:textSize="46sp"
-        app:layout_constraintBottom_toTopOf="@+id/cardView"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.5"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_chainStyle="spread" />
+        app:layout_constraintTop_toTopOf="parent">
 
+        <com.google.android.material.appbar.MaterialToolbar
+            style="@style/Widget.MaterialComponents.Toolbar.Primary"
+            android:id="@+id/topAppBar"
+            android:layout_width="match_parent"
+            android:layout_height="?attr/actionBarSize"
+            app:menu="@menu/top_app_bar"
+            app:navigationIcon="@drawable/baseline_menu_24"
+            app:title="Skillfactory"
+            app:titleTextColor="@android:color/white"/>
 
-    <androidx.cardview.widget.CardView
-        android:id="@+id/cardView"
-        android:layout_width="0dp"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="50dp"
-        android:layout_marginEnd="50dp"
-        app:cardCornerRadius="10dp"
-        app:cardElevation="30dp"
-        app:layout_constraintBottom_toTopOf="@+id/textView"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.5"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/textView2">
-
-        <ImageView
-            android:layout_width="wrap_content"
-            android:layout_height="200dp"
-            android:scaleType="centerCrop"
-            android:src="@drawable/scale_1200" />
-    </androidx.cardview.widget.CardView>
-
-    <TextView
-        android:id="@+id/textView"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:maxLines="3"
-        android:shadowColor="#000000"
-        android:shadowDx="10"
-        android:shadowDy="10"
-        android:shadowRadius="10"
-        android:text="@string/motiving_text"
-        android:textAlignment="center"
-        android:textColor="#DC1F201F"
-        android:textSize="13pt"
-        app:layout_constraintBottom_toTopOf="@+id/appCompatButton2"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.5"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/cardView" />
-
-    <Button
-        android:id="@+id/appCompatButton2"
-        android:layout_width="79dp"
-        android:layout_height="48dp"
-        android:background="@drawable/reple_test"
-        android:text="@string/button"
-        android:textColor="#000000"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.5"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/textView" />
-
+    </com.google.android.material.appbar.AppBarLayout>
 </androidx.constraintlayout.widget.ConstraintLayout>

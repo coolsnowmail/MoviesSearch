@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+    <item
+        android:id="@+id/fav"
+        app:showAsAction="ifRoom"
+        android:icon="@drawable/baseline_favorite_border_24"
+        android:title="Избранное"/>
+
+    <item
+        android:id="@+id/search"
+        app:showAsAction="ifRoom"
+        android:icon="@drawable/baseline_search_24"
+        android:title="Поиск" />
+
+    <item
+        android:id="@+id/more"
+        app:showAsAction="withText"
+        android:title="Еще"
+        android:iconTintMode="add"
+        android:iconTint="@color/white"/>
+</menu>

@@ -18,13 +18,14 @@ class MainActivity : AppCompatActivity() {
         // setContentView(R.layout.activity_main) // default method
         binding = ActivityMainBinding.inflate(layoutInflater)
         setContentView(binding.root)
-        binding.appCompatButton2?.setOnClickListener {
-            Toast.makeText(
-                this,
-                "ЧИН ЧИНАРЕМ",
-                Toast.LENGTH_SHORT
-            ).show()
-        }
+//        binding.topAppBar.navigationIconTin
+//        binding.appCompatButton2?.setOnClickListener {
+//            Toast.makeText(
+//                this,
+//                "ЧИН ЧИНАРЕМ",
+//                Toast.LENGTH_SHORT
+//            ).show()
+//        }
 
         //viewBinding
 //        binding = ActivityMainBinding.inflate(layoutInflater)
