@@ -18,6 +18,10 @@ class MainActivity : AppCompatActivity() {
         // setContentView(R.layout.activity_main) // default method
         binding = ActivityMainBinding.inflate(layoutInflater)
         setContentView(binding.root)
+        binding.topAppBar?.setNavigationOnClickListener {
+            Toast.makeText(this, "Когда-нибудь здесь будет навигация...", Toast.LENGTH_SHORT).show()
+        }
+
 //        binding.topAppBar.navigationIconTin
 //        binding.appCompatButton2?.setOnClickListener {
 //            Toast.makeText(
