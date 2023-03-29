@@ -21,25 +21,22 @@ class MainActivity : AppCompatActivity() {
         binding.topAppBar?.setNavigationOnClickListener {
             Toast.makeText(this, "Когда-нибудь здесь будет навигация...", Toast.LENGTH_SHORT).show()
         }
-
-//        binding.topAppBar.navigationIconTin
-//        binding.appCompatButton2?.setOnClickListener {
-//            Toast.makeText(
-//                this,
-//                "ЧИН ЧИНАРЕМ",
-//                Toast.LENGTH_SHORT
-//            ).show()
-//        }
-
-        //viewBinding
-//        binding = ActivityMainBinding.inflate(layoutInflater)
-//        setContentView(binding.root) // we now set the contentview as the binding.root
-//        binding.button.setOnClickListener()
-//        binding.button.text = "Hallo and welcome"
+        binding.topAppBar?.setOnMenuItemClickListener {
+            when (it.itemId) {
+                R.id.fav -> {
+                    Toast.makeText(this, "Избранное", Toast.LENGTH_SHORT).show()
+                    true
+                }
+                R.id.search -> {
+                    Toast.makeText(this, "Поиск", Toast.LENGTH_SHORT).show()
+                    true
+                }
+                R.id.more -> {
+                    Toast.makeText(this, "Еще", Toast.LENGTH_SHORT).show()
+                    true
+                }
+                else -> false
+            }
+        }
     }
-    // default method
-//    fun onClickToast(view: View) {
-//        Toast.makeText(this, "chin", Toast.LENGTH_SHORT).show()
-//    }
-    // default method don't forget to add onClick attribute on button or whatever
 }
