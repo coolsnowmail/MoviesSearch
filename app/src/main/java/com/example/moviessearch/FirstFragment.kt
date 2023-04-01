@@ -19,6 +19,12 @@ class FirstFragment : Fragment() {
         return binding.root
     }
 
+    override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
+        super.onViewCreated(view, savedInstanceState)
+        binding.textInFragment.text = "helllo programmatic"
+//        binding.textInFragment.textSize = 35.0F
+    }
+
     override fun onDestroyView() {
         _binding = null
         super.onDestroyView()
