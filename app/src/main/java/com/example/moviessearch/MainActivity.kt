@@ -7,36 +7,35 @@ import android.view.View
 import android.view.View.OnClickListener
 import android.widget.TextView
 import android.widget.Toast
+import androidx.core.content.ContextCompat
+import com.example.moviessearch.PagerItem
+import com.example.moviessearch.ViewPagerAdapter
 import com.megamovies.moviessearch.databinding.ActivityMainBinding
+import com.megamovies.moviessearch.databinding.ItemBinding
 
-
+private lateinit var binding: ActivityMainBinding
 class MainActivity : AppCompatActivity() {
 
-    private lateinit var binding: ActivityMainBinding
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         // setContentView(R.layout.activity_main) // default method
         binding = ActivityMainBinding.inflate(layoutInflater)
         setContentView(binding.root)
-        binding.topAppBar?.setNavigationOnClickListener {
-            Toast.makeText(this, "Когда-нибудь здесь будет навигация...", Toast.LENGTH_SHORT).show()
-        }
-        binding.topAppBar?.setOnMenuItemClickListener {
-            when (it.itemId) {
-                R.id.fav -> {
-                    Toast.makeText(this, "Избранное", Toast.LENGTH_SHORT).show()
-                    true
-                }
-                R.id.search -> {
-                    Toast.makeText(this, "Поиск", Toast.LENGTH_SHORT).show()
-                    true
-                }
-                R.id.more -> {
-                    Toast.makeText(this, "Еще", Toast.LENGTH_SHORT).show()
-                    true
-                }
-                else -> false
-            }
-        }
+        //Создаем адаптер
+        val pagerAdapter = ViewPagerAdapter()
+
+        //Привязываем созданный адаптер к нашему ViewPager, который у нас в разметке
+        binding.viewPager2?.adapter = pagerAdapter
+
+        //Создаем список элементов, который передадим в адаптер
+        val pagerItems = listOf<PagerItem>(
+            PagerItem(ContextCompat.getColor(this, R.color.black), "Red"),
+            PagerItem(ContextCompat.getColor(this, R.color.purple_500), "Green"),
+            PagerItem(ContextCompat.getColor(this, R.color.teal_700), "Yellow")
+        )
+
+        //Передаем список в адаптер
+        pagerAdapter.setItems(pagerItems)
     }
 }
