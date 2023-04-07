@@ -5,6 +5,7 @@ import android.os.Bundle
 import android.view.Gravity
 import android.view.View
 import android.view.View.OnClickListener
+import android.view.animation.AnimationUtils
 import android.widget.TextView
 import android.widget.Toast
 import androidx.core.content.ContextCompat
@@ -22,6 +23,9 @@ class MainActivity : AppCompatActivity() {
         // setContentView(R.layout.activity_main) // default method
         binding = ActivityMainBinding.inflate(layoutInflater)
         setContentView(binding.root)
+        val myAnimation = AnimationUtils.loadAnimation(this, R.anim.my_anim)
+        binding.view?.startAnimation(myAnimation)
+
         //Создаем адаптер
 //        val pagerAdapter = ViewPagerAdapter()
 //
