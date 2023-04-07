@@ -23,19 +23,19 @@ class MainActivity : AppCompatActivity() {
         binding = ActivityMainBinding.inflate(layoutInflater)
         setContentView(binding.root)
         //Создаем адаптер
-        val pagerAdapter = ViewPagerAdapter()
-
-        //Привязываем созданный адаптер к нашему ViewPager, который у нас в разметке
-        binding.viewPager2?.adapter = pagerAdapter
-
-        //Создаем список элементов, который передадим в адаптер
-        val pagerItems = listOf<PagerItem>(
-            PagerItem(ContextCompat.getColor(this, R.color.black), "Red"),
-            PagerItem(ContextCompat.getColor(this, R.color.purple_500), "Green"),
-            PagerItem(ContextCompat.getColor(this, R.color.teal_700), "Yellow")
-        )
-
-        //Передаем список в адаптер
-        pagerAdapter.setItems(pagerItems)
+//        val pagerAdapter = ViewPagerAdapter()
+//
+//        //Привязываем созданный адаптер к нашему ViewPager, который у нас в разметке
+//        binding.viewPager2?.adapter = pagerAdapter
+//
+//        //Создаем список элементов, который передадим в адаптер
+//        val pagerItems = listOf<PagerItem>(
+//            PagerItem(ContextCompat.getColor(this, R.color.black), "Red"),
+//            PagerItem(ContextCompat.getColor(this, R.color.purple_500), "Green"),
+//            PagerItem(ContextCompat.getColor(this, R.color.teal_700), "Yellow")
+//        )
+//
+//        //Передаем список в адаптер
+//        pagerAdapter.setItems(pagerItems)
     }
 }
