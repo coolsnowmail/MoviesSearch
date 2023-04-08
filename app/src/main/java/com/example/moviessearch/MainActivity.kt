@@ -23,8 +23,11 @@ class MainActivity : AppCompatActivity() {
         // setContentView(R.layout.activity_main) // default method
         binding = ActivityMainBinding.inflate(layoutInflater)
         setContentView(binding.root)
-        val myAnimation = AnimationUtils.loadAnimation(this, R.anim.my_anim)
-        binding.view?.startAnimation(myAnimation)
+        val myAnimation = AnimationUtils.loadAnimation(this, R.anim.roket_anim)
+        binding.roket?.setOnClickListener{
+            binding.roket?.startAnimation(myAnimation)
+
+        }
 
         //Создаем адаптер
 //        val pagerAdapter = ViewPagerAdapter()
