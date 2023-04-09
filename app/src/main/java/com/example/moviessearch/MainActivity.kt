@@ -1,5 +1,7 @@
 package com.megamovies.moviessearch
 
+import android.animation.Animator
+import android.animation.ObjectAnimator
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.view.Gravity
@@ -23,11 +25,39 @@ class MainActivity : AppCompatActivity() {
         // setContentView(R.layout.activity_main) // default method
         binding = ActivityMainBinding.inflate(layoutInflater)
         setContentView(binding.root)
-        val myAnimation = AnimationUtils.loadAnimation(this, R.anim.roket_anim)
-        binding.roket?.setOnClickListener{
-            binding.roket?.startAnimation(myAnimation)
+        val animationUpdateListener = object: Animator.AnimatorListener {
+            override fun onAnimationRepeat(animation: Animator) {
+                Toast.makeText(this@MainActivity, "Animation repeat", Toast.LENGTH_SHORT).show()
+            }
 
+            override fun onAnimationEnd(animation: Animator) {
+                Toast.makeText(this@MainActivity, "Animation End", Toast.LENGTH_SHORT).show()
+            }
+
+            override fun onAnimationCancel(animation: Animator) {
+                Toast.makeText(this@MainActivity, "Animation cancel", Toast.LENGTH_SHORT).show()
+            }
+
+            override fun onAnimationStart(animation: Animator) {
+                Toast.makeText(this@MainActivity, "Animation start", Toast.LENGTH_SHORT).show()
+                println("start")
+            }
         }
+
+        binding.button.setOnClickListener {
+            val anim = ObjectAnimator.ofFloat(binding.roket, View.TRANSLATION_Y, 0F, -1000F)
+            anim.duration = 1000
+            anim.addListener(animationUpdateListener)
+            anim.start()
+        }
+
+
+
+//        val myAnimation = AnimationUtils.loadAnimation(this, R.anim.roket_anim)
+//        binding.roket?.setOnClickListener{
+//            binding.roket?.startAnimation(myAnimation)
+
+//        }
 
         //Создаем адаптер
 //        val pagerAdapter = ViewPagerAdapter()
