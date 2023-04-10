@@ -1,6 +1,7 @@
 package com.megamovies.moviessearch
 
 import android.animation.Animator
+import android.animation.AnimatorSet
 import android.animation.ObjectAnimator
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
@@ -15,8 +16,10 @@ import com.example.moviessearch.PagerItem
 import com.example.moviessearch.ViewPagerAdapter
 import com.megamovies.moviessearch.databinding.ActivityMainBinding
 import com.megamovies.moviessearch.databinding.ItemBinding
+import kotlinx.coroutines.delay
 
 private lateinit var binding: ActivityMainBinding
+
 class MainActivity : AppCompatActivity() {
 
 
@@ -25,54 +28,31 @@ class MainActivity : AppCompatActivity() {
         // setContentView(R.layout.activity_main) // default method
         binding = ActivityMainBinding.inflate(layoutInflater)
         setContentView(binding.root)
-        val animationUpdateListener = object: Animator.AnimatorListener {
-            override fun onAnimationRepeat(animation: Animator) {
-                Toast.makeText(this@MainActivity, "Animation repeat", Toast.LENGTH_SHORT).show()
-            }
 
-            override fun onAnimationEnd(animation: Animator) {
-                Toast.makeText(this@MainActivity, "Animation End", Toast.LENGTH_SHORT).show()
-            }
+        val sunAnim = ObjectAnimator.ofFloat(binding.sun, View.TRANSLATION_Y, -1000f)
+        sunAnim.duration = 3000
 
-            override fun onAnimationCancel(animation: Animator) {
-                Toast.makeText(this@MainActivity, "Animation cancel", Toast.LENGTH_SHORT).show()
-            }
+        val sunRizeAnim = ObjectAnimator.ofFloat(binding.sunrize, View.ALPHA, 0F, 1F)
+        sunRizeAnim.duration = 4000
 
-            override fun onAnimationStart(animation: Animator) {
-                Toast.makeText(this@MainActivity, "Animation start", Toast.LENGTH_SHORT).show()
-                println("start")
-            }
-        }
+        val cloudyAnim = ObjectAnimator.ofFloat(binding.sunrize, View.ALPHA, 1F, 0.7F)
+        sunRizeAnim.duration = 10
 
-        binding.button.setOnClickListener {
-            val anim = ObjectAnimator.ofFloat(binding.roket, View.TRANSLATION_Y, 0F, -1000F)
-            anim.duration = 1000
-            anim.addListener(animationUpdateListener)
-            anim.start()
-        }
+        val cloud1 = ObjectAnimator.ofFloat(binding.leftCloud, View.TRANSLATION_X, 600f)
+        cloud1.duration = 2000
 
+        val cloud2 = ObjectAnimator.ofFloat(binding.rightCloud, View.TRANSLATION_X, -700f)
+        cloud2.duration = 3000
+
+        val animatorSun = AnimatorSet()
+        animatorSun.playTogether(sunAnim, sunRizeAnim)
+
+        animatorSun.play(cloud1).after(500)
+        animatorSun.play(cloud2).after(500)
+        animatorSun.play(cloudyAnim).after(cloud2)
+
+        animatorSun.start()
 
 
-//        val myAnimation = AnimationUtils.loadAnimation(this, R.anim.roket_anim)
-//        binding.roket?.setOnClickListener{
-//            binding.roket?.startAnimation(myAnimation)
-
-//        }
-
-        //Создаем адаптер
-//        val pagerAdapter = ViewPagerAdapter()
-//
-//        //Привязываем созданный адаптер к нашему ViewPager, который у нас в разметке
-//        binding.viewPager2?.adapter = pagerAdapter
-//
-//        //Создаем список элементов, который передадим в адаптер
-//        val pagerItems = listOf<PagerItem>(
-//            PagerItem(ContextCompat.getColor(this, R.color.black), "Red"),
-//            PagerItem(ContextCompat.getColor(this, R.color.purple_500), "Green"),
-//            PagerItem(ContextCompat.getColor(this, R.color.teal_700), "Yellow")
-//        )
-//
-//        //Передаем список в адаптер
-//        pagerAdapter.setItems(pagerItems)
     }
 }
