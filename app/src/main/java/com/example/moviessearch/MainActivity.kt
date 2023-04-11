@@ -30,13 +30,8 @@ class MainActivity : AppCompatActivity() {
         // setContentView(R.layout.activity_main) // default method
         binding = ActivityMainBinding.inflate(layoutInflater)
         setContentView(binding.root)
-//        Toast.makeText(this, "fdsfsdfdsfdsf", Toast.LENGTH_SHORT)
-        binding.button6.setOnClickListener {
-            binding.placeHolder.animate()
-                .setDuration(300)
-                .setInterpolator(DecelerateInterpolator())
-                .alpha(0f)
-        }
+        binding.likeBut.setOnClickListener {
 
+        }
     }
 }

@@ -4,24 +4,31 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:background="#FF6F00"
     tools:context=".MainActivity">
 
-    <Button
-        android:id="@+id/button6"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:text="Button"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
-
-    <ImageView
-        android:id="@+id/place_holder"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
+    <FrameLayout
+        android:id="@+id/likeBut"
+        android:layout_width="200dp"
+        android:layout_height="200dp"
+        android:background="#ECDFDF"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:srcCompat="@drawable/ic_launcher_foreground" />
+        android:clickable="true"
+        android:stateListAnimator="@animator/elevation">
 
+        <TextView
+            android:id="@+id/textView2"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:gravity="center"
+            android:shadowColor="#B54B4B"
+            android:text="Жмак!"
+            android:textSize="25sp"
+            android:textStyle="bold|italic"
+            android:shadowRadius="@integer/material_motion_duration_long_1"/>
+    </FrameLayout>
 </androidx.constraintlayout.widget.ConstraintLayout>
