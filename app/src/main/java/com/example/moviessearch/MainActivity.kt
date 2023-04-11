@@ -3,6 +3,7 @@ package com.megamovies.moviessearch
 import android.animation.Animator
 import android.animation.AnimatorSet
 import android.animation.ObjectAnimator
+import android.graphics.drawable.AnimatedVectorDrawable
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.view.Gravity
@@ -28,31 +29,12 @@ class MainActivity : AppCompatActivity() {
         // setContentView(R.layout.activity_main) // default method
         binding = ActivityMainBinding.inflate(layoutInflater)
         setContentView(binding.root)
-
-        val sunAnim = ObjectAnimator.ofFloat(binding.sun, View.TRANSLATION_Y, -1000f)
-        sunAnim.duration = 3000
-
-        val sunRizeAnim = ObjectAnimator.ofFloat(binding.sunrize, View.ALPHA, 0F, 1F)
-        sunRizeAnim.duration = 4000
-
-        val cloudyAnim = ObjectAnimator.ofFloat(binding.sunrize, View.ALPHA, 1F, 0.7F)
-        sunRizeAnim.duration = 10
-
-        val cloud1 = ObjectAnimator.ofFloat(binding.leftCloud, View.TRANSLATION_X, 600f)
-        cloud1.duration = 2000
-
-        val cloud2 = ObjectAnimator.ofFloat(binding.rightCloud, View.TRANSLATION_X, -700f)
-        cloud2.duration = 3000
-
-        val animatorSun = AnimatorSet()
-        animatorSun.playTogether(sunAnim, sunRizeAnim)
-
-        animatorSun.play(cloud1).after(500)
-        animatorSun.play(cloud2).after(500)
-        animatorSun.play(cloudyAnim).after(cloud2)
-
-        animatorSun.start()
-
+//        Toast.makeText(this, "fdsfsdfdsfdsf", Toast.LENGTH_SHORT)
+        binding.placeHolder.setImageDrawable(this.getDrawable(R.drawable.avd_anim))
+        val animation = binding.placeHolder.drawable as AnimatedVectorDrawable
+            binding.placeHolder.setOnClickListener {
+                animation.start()
+        }
 
     }
 }
