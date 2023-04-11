@@ -10,6 +10,7 @@ import android.view.Gravity
 import android.view.View
 import android.view.View.OnClickListener
 import android.view.animation.AnimationUtils
+import android.view.animation.DecelerateInterpolator
 import android.widget.TextView
 import android.widget.Toast
 import androidx.core.content.ContextCompat
@@ -30,10 +31,11 @@ class MainActivity : AppCompatActivity() {
         binding = ActivityMainBinding.inflate(layoutInflater)
         setContentView(binding.root)
 //        Toast.makeText(this, "fdsfsdfdsfdsf", Toast.LENGTH_SHORT)
-        binding.placeHolder.setImageDrawable(this.getDrawable(R.drawable.avd_anim))
-        val animation = binding.placeHolder.drawable as AnimatedVectorDrawable
-            binding.placeHolder.setOnClickListener {
-                animation.start()
+        binding.button6.setOnClickListener {
+            binding.placeHolder.animate()
+                .setDuration(300)
+                .setInterpolator(DecelerateInterpolator())
+                .alpha(0f)
         }
 
     }
