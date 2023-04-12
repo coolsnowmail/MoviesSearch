@@ -7,7 +7,6 @@
     android:background="@drawable/corner_background"
     tools:context=".MainActivity">
 
-
     <com.google.android.material.appbar.AppBarLayout
         android:id="@+id/app_bar_layout"
         android:layout_width="match_parent"
@@ -80,6 +79,91 @@
 
         </LinearLayout>
     </androidx.cardview.widget.CardView>
+
+    <GridLayout
+        android:layout_width="wrap_content"
+        android:layout_height="0dp"
+        android:layout_margin="16dp"
+        android:columnCount="2"
+        android:layoutAnimation="@anim/layout_anim"
+        android:orientation="horizontal"
+        android:useDefaultMargins="true"
+        app:layout_constraintBottom_toTopOf="@+id/bottom_navigation"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintRight_toRightOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/textView">
+
+        <androidx.cardview.widget.CardView
+            android:id="@+id/poster1"
+            android:layout_width="100dp"
+            android:layout_height="100dp"
+            android:clickable="true"
+            android:stateListAnimator="@animator/poster_push_animator"
+            app:cardCornerRadius="15dp">
+
+            <ImageView
+                android:id="@+id/poster_spider_man"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:scaleType="centerCrop"
+                android:src="@drawable/spider_man" />
+
+        </androidx.cardview.widget.CardView>
+
+        <androidx.cardview.widget.CardView
+            android:id="@+id/poster2"
+            android:layout_width="100dp"
+            android:layout_height="100dp"
+            android:clickable="true"
+            android:stateListAnimator="@animator/poster_push_animator"
+            app:cardCornerRadius="15dp"
+            android:focusable="true">
+
+            <ImageView
+                android:id="@+id/poster_super_man"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:scaleType="centerCrop"
+                android:src="@drawable/batman_vs_superman" />
+
+        </androidx.cardview.widget.CardView>
+
+        <androidx.cardview.widget.CardView
+            android:id="@+id/poster3"
+            android:layout_width="100dp"
+            android:layout_height="100dp"
+            android:clickable="true"
+            android:stateListAnimator="@animator/poster_push_animator"
+            app:cardCornerRadius="15dp">
+
+            <ImageView
+                android:id="@+id/poster_indiana"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:scaleType="centerCrop"
+                android:src="@drawable/indiana_jones_and_the_dial_of_destiny" />
+
+        </androidx.cardview.widget.CardView>
+
+        <androidx.cardview.widget.CardView
+            android:id="@+id/poster4"
+            android:layout_width="100dp"
+            android:layout_height="100dp"
+            android:clickable="true"
+            android:stateListAnimator="@animator/poster_push_animator"
+            app:cardCornerRadius="15dp"
+            android:focusable="true">
+
+            <ImageView
+                android:id="@+id/hangover"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:scaleType="centerCrop"
+                android:src="@drawable/hangover" />
+
+        </androidx.cardview.widget.CardView>
+    </GridLayout>
+
 
     <com.google.android.material.bottomnavigation.BottomNavigationView
         android:id="@+id/bottom_navigation"
