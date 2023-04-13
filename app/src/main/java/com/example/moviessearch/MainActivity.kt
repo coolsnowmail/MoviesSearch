@@ -14,6 +14,7 @@ import android.view.animation.DecelerateInterpolator
 import android.widget.TextView
 import android.widget.Toast
 import androidx.core.content.ContextCompat
+import androidx.recyclerview.widget.RecyclerView
 import com.example.moviessearch.PagerItem
 import com.example.moviessearch.ViewPagerAdapter
 import com.megamovies.moviessearch.databinding.ActivityMainBinding
@@ -30,8 +31,6 @@ class MainActivity : AppCompatActivity() {
         // setContentView(R.layout.activity_main) // default method
         binding = ActivityMainBinding.inflate(layoutInflater)
         setContentView(binding.root)
-        binding.likeBut.setOnClickListener {
-
-        }
+        val recyclerView = findViewById<RecyclerView>(R.id.recycler_view)
     }
 }
