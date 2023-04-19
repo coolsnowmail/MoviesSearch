@@ -1,0 +1,37 @@
+package com.example.moviessearch
+
+object TaskList {
+    val taskList = listOf<Task>(
+        Task("Task dgfsdfdsfdsfds", "12:00"),
+        Task("Task dgfsdfdsfdsfds", "12:00"),
+        Task("Task dgfsdfdsfdsfds", "55:00"),
+        Task("Task fuckin fuck", "11:00"),
+        Task("Task fuckin fuck", "11:00"),
+        Task("Task fuckin fuck", "11:00"),
+        Task("Task fuckin fuck", "11:00"),
+        Task("Task fuckin fuck", "11:00"),
+        Task("Task fuckin fuck", "11:00"),
+        Task("Task dgfsdfdsfdsfds", "12:00"),
+        Task("Task dgfsdfdsfdsfds", "12:00"),
+        Task("Task dgfsdfdsfdsfds", "12:00"),
+        Task("Task dgfsdfdsfdsfds", "12:00"),
+        Task("Task dgfsdfdsfdsfds", "12:00"),
+        Task("Task dgfsdfdsfdsfqweqwq3q4eqrqewrwrwrwrwr", "q2:00"),
+        Task("Task dgfsdfdsfdsfqweqwq3q4eqrqewrwrwrwrwr", "q2:00"),
+        Task("Task dgfsdfdsfdsfqweqwq3q4eqrqewrwrwrwrwr", "q2:00"),
+        Task("Task dgfsdfdsfdsfqweqwq3q4eqrqewrwrwrwrwr", "q2:00"),
+        Task("Task dgfsdfdsfdsfqweqwq3q4eqrqewrwrwrwrwr", "q2:00"),
+        Task("Task dgfsdfdsfdsfds", "12:00"),
+        Task("Task dgfsdfdsfdsfds", "12:00"),
+        Task("Task dgfsdfdsfdsfds", "12:00"),
+        Task("Task dgfsdfdsfdsfds", "12:00"),
+        Task("Task dgfsdfdsfdsfds", "12:00"),
+        Task("Task dgfsdfdsfdsfds", "12:00"),
+        Task("Task dgfsdfdsfdsfds", "12:00"),
+        Task("Task dgfsdfdsfdsfds", "12:00"),
+        Task("Task dgfsdfdsfdsfds", "12:00"),
+        Task("Task dgfsdfdsfdsfds", "12:00"),
+        Task("Task dgfsdfdsfdsfds", "12:00"),
+        Task("Task dgfsdfdsfdsfds", "12:00"),
+    )
+}

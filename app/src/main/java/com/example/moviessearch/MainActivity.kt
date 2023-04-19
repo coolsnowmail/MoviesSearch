@@ -1,26 +1,13 @@
 package com.megamovies.moviessearch
 
-import android.animation.Animator
-import android.animation.AnimatorSet
-import android.animation.ObjectAnimator
-import android.graphics.drawable.AnimatedVectorDrawable
-import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
-import android.view.Gravity
-import android.view.View
-import android.view.View.OnClickListener
-import android.view.animation.AnimationUtils
-import android.view.animation.DecelerateInterpolator
-import android.widget.TextView
-import android.widget.Toast
-import androidx.core.content.ContextCompat
-import androidx.recyclerview.widget.GridLayoutManager
+import androidx.appcompat.app.AppCompatActivity
+import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
-import com.example.moviessearch.PagerItem
-import com.example.moviessearch.ViewPagerAdapter
+import com.example.moviessearch.MainAdaptor
+import com.example.moviessearch.TaskList
 import com.megamovies.moviessearch.databinding.ActivityMainBinding
-import com.megamovies.moviessearch.databinding.ItemBinding
-import kotlinx.coroutines.delay
+
 
 private lateinit var binding: ActivityMainBinding
 
@@ -29,10 +16,16 @@ class MainActivity : AppCompatActivity() {
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        // setContentView(R.layout.activity_main) // default method
+//         setContentView(R.layout.activity_main) // default method
         binding = ActivityMainBinding.inflate(layoutInflater)
         setContentView(binding.root)
-        val recyclerView = findViewById < RecyclerView > (R.id.recycler_view)
+        val adapter = MainAdaptor(TaskList.taskList)
+        binding.recyclerView.layoutManager = LinearLayoutManager(this, LinearLayoutManager.VERTICAL, false)
+        binding.recyclerView.adapter = adapter
+//        val layoutManager: RecyclerView.LayoutManager = LinearLayoutManager(this)
+//        binding.recyclerView.setLayoutManager(layoutManager)
+//        val recyclerView = findViewById < RecyclerView > (R.id.recycler_view)
 //        recyclerView.layoutManager = GridLayoutManager(this, 5)
     }
+
 }
