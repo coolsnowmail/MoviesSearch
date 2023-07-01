@@ -37,5 +37,14 @@ class MainActivity : AppCompatActivity() {
         })
 
 
+        binding.bottomNavigation.setOnItemSelectedListener {
+            when(it.itemId) {
+                R.id.action_dail -> Toast.makeText(this, "Dial", Toast.LENGTH_SHORT).show()
+                R.id.action_mail -> Toast.makeText(this, "Mail", Toast.LENGTH_SHORT).show()
+                R.id.action_map -> Toast.makeText(this, "Map", Toast.LENGTH_SHORT).show()
+            }
+            false
+        }
+
     }
 }
