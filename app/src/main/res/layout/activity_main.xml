@@ -57,6 +57,7 @@
         app:layout_anchorGravity="bottom|end"
         app:srcCompat="@android:drawable/ic_dialog_email" />
 
+
     <FrameLayout
         android:id="@+id/bottom_view"
         android:layout_width="match_parent"
@@ -73,4 +74,15 @@
             app:itemTextColor="@color/black"
             app:menu="@menu/menu_bottom_navigation" />
     </FrameLayout>
+
+    <FrameLayout
+        android:id="@+id/background_tint"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:alpha="0"
+        android:background="@color/black" />
+
+    <include
+        android:id="@+id/bottom_sheet"
+        layout="@layout/bottom_sheet" />
 </androidx.coordinatorlayout.widget.CoordinatorLayout>
