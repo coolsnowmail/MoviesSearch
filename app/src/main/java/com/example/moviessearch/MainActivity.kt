@@ -35,5 +35,7 @@ class MainActivity : AppCompatActivity() {
             }
             binding.toolbarLayout.title = verticalOffset.toString()
         })
+
+
     }
 }
