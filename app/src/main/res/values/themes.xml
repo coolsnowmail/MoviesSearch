@@ -2,7 +2,8 @@
     <!-- Base application theme. -->
     <style name="Theme.MoviesSearch" parent="Theme.MaterialComponents.DayNight.NoActionBar">
         <!-- Primary brand color. -->
-        <item name="colorPrimary">@color/purple_500</item>
+        <item name="colorPrimary">#673AB7</item>
+        <item name="colorPrimaryDark">#FF5722</item>
         <item name="colorPrimaryVariant">@color/purple_700</item>
         <item name="colorOnPrimary">@color/white</item>
         <!-- Secondary brand color. -->
@@ -11,6 +12,9 @@
         <item name="colorOnSecondary">@color/black</item>
         <!-- Status bar color. -->
         <item name="android:statusBarColor">?attr/colorPrimaryVariant</item>
+        <item name="android:windowTranslucentStatus">true</item>
         <!-- Customize your theme here. -->
+
+
     </style>
 </resources>

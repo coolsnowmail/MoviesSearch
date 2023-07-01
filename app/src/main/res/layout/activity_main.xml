@@ -53,6 +53,7 @@
         android:layout_height="wrap_content"
         android:layout_margin="10dp"
         android:backgroundTint="@android:color/darker_gray"
+        android:contentDescription="@string/fab_transformation_sheet_behavior"
         app:layout_anchor="@id/app_bar"
         app:layout_anchorGravity="bottom|end"
         app:srcCompat="@android:drawable/ic_dialog_email" />
