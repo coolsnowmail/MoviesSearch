@@ -17,7 +17,9 @@ class MainActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         binding = ActivityMainBinding.inflate(layoutInflater)
         setContentView(binding.root)
-//        val snackbar = Snackbar.make()
-
+        val snackbar = Snackbar.make(binding.mainLayout, "SnackBar", Snackbar.LENGTH_INDEFINITE)
+        binding.fab.setOnClickListener {
+            snackbar.show()
+        }
     }
 }
