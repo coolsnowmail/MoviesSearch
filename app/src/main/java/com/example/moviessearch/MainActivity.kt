@@ -1,6 +1,7 @@
 package com.megamovies.moviessearch
 
 import Film
+import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.widget.Toast
@@ -75,7 +76,21 @@ class MainActivity : AppCompatActivity() {
             //оставим его пока пустым, он нам понадобится во второй части задания
             filmsAdapter =
                 FilmListRecyclerAdapter(object : FilmListRecyclerAdapter.OnItemClickListener {
-                    override fun click(film: Film, position: Int) {}
+                    override fun click(film: Film) {
+//                        val intent = Intent(this@MainActivity, DetailsActivity::class.java)
+//                        startActivity(intent)
+                        //Создаем бандл и кладем туда объект с данными фильма
+                        val bundle = Bundle()
+                        //Первым параметром указывается ключ, по которому потом будем искать, вторым сам
+                        //передаваемый объект
+                        bundle.putParcelable("film", film)
+                        //Запускаем наше активити
+                        val intent = Intent(this@MainActivity, DetailsActivity::class.java)
+                        //Прикрепляем бандл к интенту
+                        intent.putExtras(bundle)
+                        //Запускаем активити через интент
+                        startActivity(intent)
+                    }
                 })
             //Присваиваем адаптер
             adapter = filmsAdapter
