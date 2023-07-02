@@ -1,11 +1,12 @@
 package com.megamovies.moviessearch
 
+import Film
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
-import android.view.LayoutInflater
 import android.widget.Toast
-import android.widget.Toast.makeText
-import com.example.moviessearch.Film
+import androidx.recyclerview.widget.LinearLayoutManager
+import com.example.moviessearch.FilmListRecyclerAdapter
+import com.example.moviessearch.TopSpacingItemDecoration
 import com.megamovies.moviessearch.databinding.ActivityMainBinding
 
 val filmsDataBase = listOf(
@@ -36,7 +37,7 @@ val filmsDataBase = listOf(
     ),
     Film(
         "Kill Bill",
-        R.drawable.rill_bill,
+        R.drawable.kill_bill,
         "After awakening from a four-year coma, a former assassin wreaks vengeance on the team of assassins who betrayed her."
     ),
     Film(
@@ -58,15 +59,36 @@ val filmsDataBase = listOf(
 
 class MainActivity : AppCompatActivity() {
     private lateinit var binding: ActivityMainBinding
+    private lateinit var filmsAdapter: FilmListRecyclerAdapter
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-//        setContentView(R.layout.activity_main)
         supportActionBar?.title = "MoviesSearcher"
         binding = ActivityMainBinding.inflate(layoutInflater)
         setContentView(binding.root)
         initNavigation()
 
-//        buttonInit()
+        //находим наш RV
+
+        binding.mainRecycler.apply {
+            //Инициализируем наш адаптер в конструктор передаем анонимно инициализированный интерфейс,
+            //оставим его пока пустым, он нам понадобится во второй части задания
+            filmsAdapter =
+                FilmListRecyclerAdapter(object : FilmListRecyclerAdapter.OnItemClickListener {
+                    override fun click(film: Film, position: Int) {}
+                })
+            //Присваиваем адаптер
+            adapter = filmsAdapter
+            //Присвои layoutmanager
+            layoutManager = LinearLayoutManager(this@MainActivity)
+            //Применяем декоратор для отступов
+            val decorator = TopSpacingItemDecoration(8)
+            addItemDecoration(decorator)
+        }
+//Кладем нашу БД в RV
+        filmsAdapter.addItems(filmsDataBase)
+
+
     }
 
     private fun initNavigation() {
@@ -104,42 +126,4 @@ class MainActivity : AppCompatActivity() {
             }
         }
     }
-
-//    private fun buttonInit() {
-//        binding.button1?.setOnClickListener {
-//            makeText(
-//                this,
-//                binding.button1.text,
-//                Toast.LENGTH_SHORT
-//            ).show()
-//        }
-//        binding.button2?.setOnClickListener {
-//            makeText(
-//                this,
-//                binding.button2.text,
-//                Toast.LENGTH_SHORT
-//            ).show()
-//        }
-//        binding.button3?.setOnClickListener {
-//            makeText(
-//                this,
-//                binding.button3.text,
-//                Toast.LENGTH_SHORT
-//            ).show()
-//        }
-//        binding.button4?.setOnClickListener {
-//            makeText(
-//                this,
-//                binding.button4.text,
-//                Toast.LENGTH_SHORT
-//            ).show()
-//        }
-//        binding.button5?.setOnClickListener {
-//            makeText(
-//                this,
-//                binding.button5.text,
-//                Toast.LENGTH_SHORT
-//            ).show()
-//        }
-//    }
 }
