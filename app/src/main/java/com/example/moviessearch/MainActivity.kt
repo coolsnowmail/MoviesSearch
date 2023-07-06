@@ -8,6 +8,7 @@ import android.os.Bundle
 import android.widget.Toast
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.example.moviessearch.BlankFragment
+import com.example.moviessearch.BlankFragment2
 import com.example.moviessearch.FilmListRecyclerAdapter
 import com.example.moviessearch.TopSpacingItemDecoration
 import com.megamovies.moviessearch.databinding.ActivityMainBinding
@@ -72,6 +73,14 @@ class MainActivity : AppCompatActivity() {
         setContentView(binding.root)
         initNavigation()
 
+
+        val tag = "fragment_1"
+        supportFragmentManager
+            .beginTransaction()
+            .add(R.id.fragment_holder, BlankFragment2(), tag)
+            .addToBackStack(null)
+            .commit()
+
 //        supportFragmentManager.beginTransaction().replace(R.layout.fragment_blank, BlankFragment()).commit()
 
         //находим наш RV
@@ -109,6 +118,17 @@ class MainActivity : AppCompatActivity() {
         filmsAdapter.addItems(filmsDataBase)
 
 
+    }
+
+    fun passData(editText: String) {
+        val bundle = Bundle()
+        bundle.putString("input", editText)
+
+        val frag2 = BlankFragment2()
+        frag2.arguments = bundle
+
+        supportFragmentManager.beginTransaction().replace(R.id.fragment_holder, frag2)
+            .addToBackStack(null).commit()
     }
 
     private fun initNavigation() {
