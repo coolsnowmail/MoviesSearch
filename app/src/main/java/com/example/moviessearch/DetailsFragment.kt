@@ -19,32 +19,12 @@ class DetailsFragment : Fragment() {
         savedInstanceState: Bundle?
     ): View? {
         binding = FragmentDetailsBinding.inflate(inflater, container, false)
-        return binding.root
         val film = arguments?.get("film") as Film
         binding.detailsToolbar.title = film.title
 //Устанавливаем картинку
         binding.detailsPoster.setImageResource(film.poster)
 //Устанавливаем описание
         binding.detailsDescription.text = film.description
+        return binding.root
     }
-
-//    override fun onCreate(savedInstanceState: Bundle?) {
-//        super.onCreate(savedInstanceState)
-////        binding = FragmentDetailsBinding.inflate(layoutInflater)
-//
-//
-//    }
-
-//    override fun onCreate(savedInstanceState: Bundle?) {
-//        super.onCreate(savedInstanceState)
-//        binding = FragmentDetailsBinding.inflate(layoutInflater)
-//        setContentView(binding.root)
-////        setContentView(R.layout.activity_details)
-//        val film = intent.extras?.get("film") as Film
-//        binding.detailsToolbar.title = film.title
-////Устанавливаем картинку
-//        binding.detailsPoster.setImageResource(film.poster)
-////Устанавливаем описание
-//        binding.detailsDescription.text = film.description
-//    }
 }
