@@ -4,7 +4,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:fitsSystemWindows="true"
-    tools:context=".DetailsFragment">
+    tools:context="com.example.moviessearch.DetailsFragment">
 
     <com.google.android.material.appbar.AppBarLayout
         android:id="@+id/app_bar"
@@ -54,7 +54,7 @@
         app:layout_anchorGravity="bottom|right"
         app:srcCompat="@drawable/ic_baseline_share_24"
         app:tint="@android:color/white"
-        android:contentDescription="TODO" />
+        android:contentDescription="@string/btn1" />
 
     <androidx.core.widget.NestedScrollView
         android:layout_width="match_parent"

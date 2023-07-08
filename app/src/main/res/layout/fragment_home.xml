@@ -5,10 +5,11 @@
     android:layout_height="match_parent"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     tools:context="com.example.moviessearch.HomeFragment">
+
     <androidx.cardview.widget.CardView
         android:id="@+id/top_bar"
         android:layout_width="match_parent"
-        android:layout_height="150dp"
+        android:layout_height="100dp"
         android:layout_margin="10dp"
         app:cardCornerRadius="15dp"
         android:elevation="5dp"
@@ -18,7 +19,7 @@
 
         <LinearLayout
             android:layout_width="match_parent"
-            android:layout_height="match_parent"
+            android:layout_height="100dp"
             android:orientation="horizontal">
 
             <ImageView
@@ -44,6 +45,7 @@
                 android:layout_height="wrap_content"
                 android:layout_weight="1 "
                 app:srcCompat="@drawable/wick_jon" />
+
 
         </LinearLayout>
 
