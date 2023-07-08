@@ -6,6 +6,7 @@ import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.widget.Toast
+import androidx.appcompat.app.AlertDialog
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.example.moviessearch.BlankFragment
 import com.example.moviessearch.BlankFragment2
@@ -61,10 +62,42 @@ val filmsDataBase = listOf(
     ),
 )
 
+
 class MainActivity : AppCompatActivity() {
     private lateinit var binding: ActivityMainBinding
     private lateinit var filmsAdapter: FilmListRecyclerAdapter
+    var backPressed = 0L
 
+    override fun onBackPressed() {
+        if (backPressed + TIME_INTERVAL > System.currentTimeMillis()) {
+            super.onBackPressed()
+            finish()
+        } else {
+            Toast.makeText(this, "Doble tab for exit", Toast.LENGTH_SHORT).show()
+        }
+
+        backPressed = System.currentTimeMillis()
+    }
+
+    companion object {
+        const val TIME_INTERVAL = 2000
+    }
+
+    //        override fun onBackPressed() {
+//        AlertDialog.Builder(this)
+//            .setTitle("Вы хотите выйти?")
+//            .setIcon(R.drawable.ic_menu_gallery)
+//            .setPositiveButton("Да") { _, _ ->
+//                finish()
+//            }
+//            .setNegativeButton("Нет") { _, _ ->
+//
+//            }
+//            .setNeutralButton("Не знаю") { _, _ ->
+//                Toast.makeText(this, "Решайся", Toast.LENGTH_SHORT).show()
+//            }
+//            .show()
+//    }
     @SuppressLint("ResourceType")
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -166,4 +199,6 @@ class MainActivity : AppCompatActivity() {
             }
         }
     }
+
+
 }
