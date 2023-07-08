@@ -30,14 +30,18 @@ class MainActivity : AppCompatActivity() {
     var backPressed = 0L
 
     override fun onBackPressed() {
-        if (backPressed + TIME_INTERVAL > System.currentTimeMillis()) {
-            super.onBackPressed()
-            finish()
-        } else {
-            Toast.makeText(this, "Doble tab for exit", Toast.LENGTH_SHORT).show()
-        }
+        if (supportFragmentManager.backStackEntryCount == 1) {
+            if (backPressed + TIME_INTERVAL > System.currentTimeMillis()) {
+                super.onBackPressed()
+                finish()
+            } else {
+                Toast.makeText(this, "Doble tab for exit", Toast.LENGTH_SHORT).show()
+            }
 
-        backPressed = System.currentTimeMillis()
+            backPressed = System.currentTimeMillis()
+        } else {
+            super.onBackPressed()
+        }
     }
 
     companion object {
