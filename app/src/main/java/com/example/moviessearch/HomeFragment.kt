@@ -7,6 +7,8 @@ import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import androidx.recyclerview.widget.LinearLayoutManager
+import com.megamovies.moviessearch.MainActivity
 import com.megamovies.moviessearch.R
 import com.megamovies.moviessearch.databinding.FragmentHomeBinding
 
@@ -68,78 +70,28 @@ class HomeFragment : Fragment() {
         savedInstanceState: Bundle?
     ): View? {
         binding = FragmentHomeBinding.inflate(inflater, container, false)
-        return binding.root
         binding.mainRecycler.apply {
+            //Инициализируем наш адаптер в конструктор передаем анонимно инициализированный интерфейс,
+            //оставим его пока пустым, он нам понадобится во второй части задания
             filmsAdapter =
                 FilmListRecyclerAdapter(object : FilmListRecyclerAdapter.OnItemClickListener {
                     override fun click(film: Film) {
-                        val bundle = Bundle()
-                        bundle.putParcelable("film", film)
-                        val intent = Intent(requireContext(), DetailsFragment::class.java)
-                        intent.putExtras(bundle)
-                        startActivity(intent)
+                        (requireActivity() as MainActivity).launchDetailsFragment(film)
                     }
                 })
+            //Присваиваем адаптер
+            adapter = filmsAdapter
+            //Присвои layoutmanager
+            layoutManager = LinearLayoutManager(requireContext())
+            //Применяем декоратор для отступов
+            val decorator = TopSpacingItemDecoration(8)
+            addItemDecoration(decorator)
         }
-//                    override fun click(film: Film) {
-////                        val intent = Intent(this@MainActivity, DetailsActivity::class.java)
-////                        startActivity(intent)
-//                        //Создаем бандл и кладем туда объект с данными фильма
-//                        val bundle = Bundle()
-//                        //Первым параметром указывается ключ, по которому потом будем искать, вторым сам
-//                        //передаваемый объект
-//                        bundle.putParcelable("film", film)
-//                        //Запускаем наше активити
-//                        val intent = Intent(this@MainActivity, DetailsActivity::class.java)
-//                        //Прикрепляем бандл к интенту
-//                        intent.putExtras(bundle)
-//                        //Запускаем активити через интент
-//                        startActivity(intent)
-//                    }
-//                })
-//            //Присваиваем адаптер
-//            adapter = filmsAdapter
-//            //Присвои layoutmanager
-//            layoutManager = LinearLayoutManager(this@MainActivity)
-//            //Применяем декоратор для отступов
-//            val decorator = TopSpacingItemDecoration(8)
-//            addItemDecoration(decorator)
-    }
-////Кладем нашу БД в RV
-//        filmsAdapter.addItems(filmsDataBase)
-//
-}
-//        binding.mainRecycler.apply {
-//            //Инициализируем наш адаптер в конструктор передаем анонимно инициализированный интерфейс,
-//            //оставим его пока пустым, он нам понадобится во второй части задания
-//            filmsAdapter =
-//                FilmListRecyclerAdapter(object : FilmListRecyclerAdapter.OnItemClickListener {
-//                    override fun click(film: Film) {
-////                        val intent = Intent(this@MainActivity, DetailsActivity::class.java)
-////                        startActivity(intent)
-//                        //Создаем бандл и кладем туда объект с данными фильма
-//                        val bundle = Bundle()
-//                        //Первым параметром указывается ключ, по которому потом будем искать, вторым сам
-//                        //передаваемый объект
-//                        bundle.putParcelable("film", film)
-//                        //Запускаем наше активити
-//                        val intent = Intent(this@MainActivity, DetailsActivity::class.java)
-//                        //Прикрепляем бандл к интенту
-//                        intent.putExtras(bundle)
-//                        //Запускаем активити через интент
-//                        startActivity(intent)
-//                    }
-//                })
-//            //Присваиваем адаптер
-//            adapter = filmsAdapter
-//            //Присвои layoutmanager
-//            layoutManager = LinearLayoutManager(this@MainActivity)
-//            //Применяем декоратор для отступов
-//            val decorator = TopSpacingItemDecoration(8)
-//            addItemDecoration(decorator)
-//        }
-////Кладем нашу БД в RV
-//        filmsAdapter.addItems(filmsDataBase)
-//
+//Кладем нашу БД в RV
+        filmsAdapter.addItems(filmsDataBase)
+        return binding.root
 
+
+    }
+}
 
