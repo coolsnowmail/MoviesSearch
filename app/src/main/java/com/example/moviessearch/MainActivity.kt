@@ -27,6 +27,23 @@ class MainActivity : AppCompatActivity() {
 
     }
 
+    var backPressed = 0L
+
+    override fun onBackPressed() {
+        if (backPressed + TIME_INTERVAL > System.currentTimeMillis()) {
+            super.onBackPressed()
+            finish()
+        } else {
+            Toast.makeText(this, "Doble tab for exit", Toast.LENGTH_SHORT).show()
+        }
+
+        backPressed = System.currentTimeMillis()
+    }
+
+    companion object {
+        const val TIME_INTERVAL = 2000
+    }
+
     fun launchDetailsFragment(film: Film) {
 
         val bundle = Bundle()
