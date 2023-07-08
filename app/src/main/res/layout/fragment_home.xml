@@ -27,7 +27,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
-                app:srcCompat="@drawable/poster_1" />
+                app:srcCompat="@drawable/joker" />
 
             <ImageView
                 android:id="@+id/imageView2"
@@ -35,7 +35,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
-                app:srcCompat="@drawable/poster_2" />
+                app:srcCompat="@drawable/spiderman" />
 
             <ImageView
                 android:id="@+id/imageView3"
@@ -43,15 +43,8 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_weight="1 "
-                app:srcCompat="@drawable/poster_3" />
+                app:srcCompat="@drawable/wick_jon" />
 
-            <ImageView
-                android:id="@+id/imageView4"
-                android:scaleType="centerCrop"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_weight="1"
-                app:srcCompat="@drawable/poster_4" />
         </LinearLayout>
 
     </androidx.cardview.widget.CardView>
