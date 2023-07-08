@@ -10,6 +10,8 @@ import com.example.moviessearch.FilmListRecyclerAdapter
 import com.example.moviessearch.TopSpacingItemDecoration
 import com.megamovies.moviessearch.databinding.ActivityMainBinding
 
+//import com.megamovies.moviessearch.databinding.ActivityMainBinding
+
 val filmsDataBase = listOf(
     Film(
         "Dark Knight",
