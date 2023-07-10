@@ -1,12 +1,11 @@
 package com.megamovies.moviessearch
 
-import Film
+import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.widget.Toast
-import com.example.moviessearch.DetailsFragment
-import com.example.moviessearch.FilmListRecyclerAdapter
-import com.example.moviessearch.HomeFragment
+import com.example.moviessearch.TestActivity1
+
 import com.megamovies.moviessearch.databinding.ActivityMainBinding
 
 
@@ -18,69 +17,32 @@ class MainActivity : AppCompatActivity() {
         supportActionBar?.title = "MoviesSearcher"
         binding = ActivityMainBinding.inflate(layoutInflater)
         setContentView(binding.root)
-        initNavigation()
-        supportFragmentManager.beginTransaction().add(R.id.fragment_placeholder, HomeFragment())
-            .addToBackStack(
-                null
-            ).commit()
-
-
-    }
-
-    var backPressed = 0L
-
-    override fun onBackPressed() {
-        if (supportFragmentManager.backStackEntryCount == 1) {
-            if (backPressed + TIME_INTERVAL > System.currentTimeMillis()) {
-                super.onBackPressed()
-                finish()
-            } else {
-                Toast.makeText(this, "Doble tab for exit", Toast.LENGTH_SHORT).show()
-            }
-
-            backPressed = System.currentTimeMillis()
-        } else {
-            super.onBackPressed()
+        binding.button.setOnClickListener {
+            val intent = Intent(this, TestActivity1::class.java)
+            startActivity(intent)
         }
 
+
     }
 
-    companion object {
-        const val TIME_INTERVAL = 2000
+    override fun onStart() {
+        super.onStart()
+        val toast = Toast.makeText(applicationContext, "Started", Toast.LENGTH_LONG)
+        toast.show()
     }
 
-    fun launchDetailsFragment(film: Film) {
-
-        val bundle = Bundle()
-        bundle.putParcelable("film", film)
-        val fragment = DetailsFragment()
-        fragment.arguments = bundle
-
-        supportFragmentManager.beginTransaction().replace(R.id.fragment_placeholder, fragment)
-            .addToBackStack(null).commit()
+    override fun onResume() {
+        super.onResume()
+        val toast = Toast.makeText(applicationContext, "Resumed", Toast.LENGTH_LONG)
+        toast.show()
     }
 
-    private fun initNavigation() {
+//    fun onClickGoTest(view: View) {
+//        val intent = Intent(this, TestActivity1::class.java)
+//        startActivity(intent)
+//    }
 
-        binding.bottomNavigation.setOnNavigationItemSelectedListener {
 
-            when (it.itemId) {
-                R.id.favorites -> {
-                    Toast.makeText(this, "Избранное", Toast.LENGTH_SHORT).show()
-                    true
-                }
-                R.id.watch_later -> {
-                    Toast.makeText(this, "Посмотреть похже", Toast.LENGTH_SHORT).show()
-                    true
-                }
-                R.id.selections -> {
-                    Toast.makeText(this, "Подборки", Toast.LENGTH_SHORT).show()
-                    true
-                }
-                else -> false
-            }
-        }
-    }
 }
 
 
