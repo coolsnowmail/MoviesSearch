@@ -8,6 +8,22 @@
     android:background="@color/design_default_color_error"
     tools:context=".MainActivity">
 
+    <FrameLayout
+        android:id="@+id/place_fragment_holder"
+        android:layout_width="match_parent"
+        android:layout_height="250dp"
+        android:background="@color/white"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent">
+
+        <Button
+            android:id="@+id/fragment_changer"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_gravity="bottom"
+            android:text="Change fragment" />
+    </FrameLayout>
+
 
     <Button
         android:id="@+id/button"
@@ -28,8 +44,7 @@
         android:textSize="50sp"
         app:layout_constraintBottom_toTopOf="@+id/button"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.498"
+        app:layout_constraintHorizontal_bias="0.496"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.666" />
+        app:layout_constraintTop_toBottomOf="@+id/place_fragment_holder" />
 </androidx.constraintlayout.widget.ConstraintLayout>
