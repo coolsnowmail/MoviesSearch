@@ -3,6 +3,8 @@ package com.megamovies.moviessearch
 import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import android.provider.ContactsContract
+import android.provider.ContactsContract.Contacts
 import android.widget.Toast
 import com.example.moviessearch.MainFragment1
 import com.example.moviessearch.MainFragment2
@@ -24,13 +26,16 @@ class MainActivity : AppCompatActivity() {
             val toast = Toast.makeText(applicationContext, "Resumed Frag1", Toast.LENGTH_LONG)
             toast.show()
         }
-            binding.fragmentChanger.setOnClickListener {
-                supportFragmentManager
-                    .beginTransaction()
-                    .replace(R.id.place_fragment_holder, MainFragment1.newInstance())
-                    .commit()
-            }
-
+        binding.fragmentChanger.setOnClickListener {
+            supportFragmentManager
+                .beginTransaction()
+                .replace(R.id.place_fragment_holder, MainFragment1.newInstance())
+                .commit()
+        }
+        binding.getRes.setOnClickListener {
+            val intent = Intent(Intent.ACTION_PICK, ContactsContract.CommonDataKinds.Phone.CONTENT_FILTER_URI)
+            startActivityForResult()
+        }
 
 //        if (MainFragment2.newInstance().isResumed) {
 //            binding.fragmentChanger.setOnClickListener {
