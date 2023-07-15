@@ -7,6 +7,7 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.Fragment
+import com.megamovies.moviessearch.R
 import com.megamovies.moviessearch.databinding.FragmentDetailsBinding
 
 
@@ -25,6 +26,20 @@ class DetailsFragment : Fragment() {
         binding.detailsPoster.setImageResource(film.poster)
 //Устанавливаем описание
         binding.detailsDescription.text = film.description
+        binding.detailsFabFavorites.setImageResource(
+            if (film.isFavorites) R.drawable.baseline_favorite_24
+            else R.drawable.baseline_favorite_border_24
+        )
+        binding.detailsFabFavorites.setOnClickListener {
+            if (!film.isFavorites) {
+                binding.detailsFabFavorites.setImageResource(R.drawable.baseline_favorite_24)
+                film.isFavorites = true
+            } else {
+                binding.detailsFabFavorites.setImageResource(R.drawable.baseline_favorite_border_24)
+                film.isFavorites = false
+            }
+        }
+
         return binding.root
     }
 }

@@ -5,7 +5,7 @@ data class Film(
     val title: String?,
     val poster: Int,
     val description: String?,
-    val isFavorites: Boolean = false
+    var isFavorites: Boolean = false
 ): Parcelable {
     constructor(parcel: Parcel) : this(
         parcel.readString(),

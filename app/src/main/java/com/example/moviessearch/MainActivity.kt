@@ -5,6 +5,7 @@ import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.widget.Toast
 import com.example.moviessearch.DetailsFragment
+import com.example.moviessearch.FavoritesFragment
 import com.example.moviessearch.FilmListRecyclerAdapter
 import com.example.moviessearch.HomeFragment
 import com.megamovies.moviessearch.databinding.ActivityMainBinding
@@ -24,7 +25,7 @@ class MainActivity : AppCompatActivity() {
                 null
             ).commit()
 
-
+//binding.bottomNavigation.
     }
 
     var backPressed = 0L
@@ -66,7 +67,10 @@ class MainActivity : AppCompatActivity() {
 
             when (it.itemId) {
                 R.id.favorites -> {
-                    Toast.makeText(this, "Избранное", Toast.LENGTH_SHORT).show()
+                    supportFragmentManager.beginTransaction()
+                        .replace(R.id.fragment_placeholder, FavoritesFragment())
+                        .addToBackStack(null)
+                        .commit()
                     true
                 }
                 R.id.watch_later -> {
