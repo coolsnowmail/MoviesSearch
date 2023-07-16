@@ -12,6 +12,7 @@ import com.megamovies.moviessearch.databinding.FragmentDetailsBinding
 import com.megamovies.moviessearch.databinding.FragmentFavoritesBinding
 
 class FavoritesFragment : Fragment() {
+    val favoritesList: MutableList<Film> = mutableListOf()
     private lateinit var binding: FragmentFavoritesBinding
 
     override fun onCreateView(
@@ -26,14 +27,20 @@ class FavoritesFragment : Fragment() {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-        val favoritesList: List<Film> = emptyList()
+        for (i in filmsDataBase) {
+            if (i.isFavorites) {
+                favoritesList += i
+            }
+        }
+
         val filmsAdapter: FilmListRecyclerAdapter
         binding.favoritesRecycler.apply {
-            filmsAdapter = FilmListRecyclerAdapter(object : FilmListRecyclerAdapter.OnItemClickListener {
-                override fun click(film: Film) {
-                    (requireActivity() as MainActivity).launchDetailsFragment(film)
-                }
-            })
+            filmsAdapter =
+                FilmListRecyclerAdapter(object : FilmListRecyclerAdapter.OnItemClickListener {
+                    override fun click(film: Film) {
+                        (requireActivity() as MainActivity).launchDetailsFragment(film)
+                    }
+                })
             adapter = filmsAdapter
             layoutManager = LinearLayoutManager(requireContext())
             val decorator = TopSpacingItemDecoration(8)
