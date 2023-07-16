@@ -18,7 +18,6 @@ class FilmListRecyclerAdapter(private val clickListener: OnItemClickListener) :
             itemFilmBinding.poster.setImageResource(film.poster)
         }
     }
-
     private val items = mutableListOf<Film>()
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): RecyclerView.ViewHolder {

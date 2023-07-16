@@ -22,7 +22,8 @@ val filmsDataBase = listOf(
     Film(
         "Back Dragt",
         R.drawable.backdraft,
-        "Two Chicago firefighter brothers, who don't get along, have to work together while a dangerous arsonist is on the loose."
+        "Two Chicago firefighter brothers, who don't get along, have to work together while a dangerous arsonist is on the loose.",
+        isFavorites = true
     ),
     Film(
         "Scarface",
