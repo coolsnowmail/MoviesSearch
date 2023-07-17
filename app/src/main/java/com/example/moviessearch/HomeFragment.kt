@@ -3,6 +3,8 @@ package com.example.moviessearch
 import Film
 import android.content.Intent
 import android.os.Bundle
+import android.text.Editable
+import android.text.TextWatcher
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
@@ -90,6 +92,21 @@ class HomeFragment : Fragment() {
         }
 //Кладем нашу БД в RV
         filmsAdapter.addItems(filmsDataBase)
+
+        val textWatcher = object : TextWatcher {
+            override fun beforeTextChanged(p0: CharSequence?, p1: Int, p2: Int, p3: Int) {
+
+            }
+
+            override fun onTextChanged(p0: CharSequence?, p1: Int, p2: Int, p3: Int) {
+                binding.disclaimer.text = p0
+            }
+
+            override fun afterTextChanged(p0: Editable?) {
+            }
+
+        }
+        binding.editTextPhone.addTextChangedListener(textWatcher)
         return binding.root
 
 

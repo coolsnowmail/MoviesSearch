@@ -8,6 +8,8 @@
     android:background="@drawable/corner_background"
     tools:context=".MainActivity">
 
+
+
     <FrameLayout
         android:id="@+id/fragment_placeholder"
         android:layout_width="match_parent"
@@ -25,5 +27,7 @@
         app:labelVisibilityMode="labeled"
         app:layout_constraintBottom_toBottomOf="parent"
         app:menu="@menu/navigate_menu" />
+
+
 
 </androidx.constraintlayout.widget.ConstraintLayout>

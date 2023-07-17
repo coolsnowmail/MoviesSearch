@@ -24,8 +24,7 @@ class MainActivity : AppCompatActivity() {
             .addToBackStack(
                 null
             ).commit()
-
-//binding.bottomNavigation.
+//binding.
     }
 
     var backPressed = 0L
