@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="utf-8"?>
 <androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
     tools:context="com.example.moviessearch.HomeFragment">
 
     <androidx.cardview.widget.CardView
@@ -11,8 +11,8 @@
         android:layout_width="match_parent"
         android:layout_height="100dp"
         android:layout_margin="10dp"
-        app:cardCornerRadius="15dp"
         android:elevation="5dp"
+        app:cardCornerRadius="15dp"
         app:layout_constraintLeft_toLeftOf="parent"
         app:layout_constraintRight_toRightOf="parent"
         app:layout_constraintTop_toTopOf="parent">
@@ -24,26 +24,26 @@
 
             <ImageView
                 android:id="@+id/imageView"
-                android:scaleType="centerCrop"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
+                android:scaleType="centerCrop"
                 app:srcCompat="@drawable/joker" />
 
             <ImageView
                 android:id="@+id/imageView2"
-                android:scaleType="centerCrop"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
+                android:scaleType="centerCrop"
                 app:srcCompat="@drawable/spiderman" />
 
             <ImageView
                 android:id="@+id/imageView3"
-                android:scaleType="centerCrop"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_weight="1 "
+                android:scaleType="centerCrop"
                 app:srcCompat="@drawable/wick_jon" />
 
 
@@ -56,9 +56,10 @@
         android:layout_width="188dp"
         android:layout_height="wrap_content"
         android:ems="10"
-        android:hint="rfgdfgdfgdfgdfg"
+        android:hint="enter text"
+        android:imeOptions="actionSend"
         android:inputType="text"
-        android:textColorHint="@color/design_default_color_error"
+        android:textColorHint="#888888"
         android:textSize="15sp"
         app:counterMaxLength="100"
         app:layout_constraintBottom_toTopOf="@+id/main_recycler"
@@ -70,9 +71,9 @@
         android:layout_height="wrap_content"
         android:layout_marginTop="16dp"
         android:layout_marginEnd="16dp"
-        android:text="@string/where_got_posters"
         android:autoLink="web"
         android:linksClickable="true"
+        android:text="@string/where_got_posters"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/top_bar" />
 
@@ -81,12 +82,11 @@
         android:layout_width="0dp"
         android:layout_height="0dp"
         android:padding="8dp"
-        tools:listitem="@layout/film_item"
-        app:layout_constraintTop_toBottomOf="@+id/disclaimer"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintLeft_toLeftOf="parent"
-        app:layout_constraintRight_toRightOf="parent"/>
-
+        app:layout_constraintRight_toRightOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/disclaimer"
+        tools:listitem="@layout/film_item" />
 
 
 </androidx.constraintlayout.widget.ConstraintLayout>
