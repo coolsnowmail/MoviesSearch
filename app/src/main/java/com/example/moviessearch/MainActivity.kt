@@ -3,6 +3,8 @@ package com.megamovies.moviessearch
 import Film
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import android.text.InputFilter
+import android.text.Spanned
 import android.widget.Toast
 import com.example.moviessearch.DetailsFragment
 import com.example.moviessearch.FavoritesFragment
@@ -24,7 +26,7 @@ class MainActivity : AppCompatActivity() {
             .addToBackStack(
                 null
             ).commit()
-//binding.
+
     }
 
     var backPressed = 0L
@@ -72,14 +74,17 @@ class MainActivity : AppCompatActivity() {
                         .commit()
                     true
                 }
+
                 R.id.watch_later -> {
                     Toast.makeText(this, "Посмотреть похже", Toast.LENGTH_SHORT).show()
                     true
                 }
+
                 R.id.selections -> {
                     Toast.makeText(this, "Подборки", Toast.LENGTH_SHORT).show()
                     true
                 }
+
                 else -> false
             }
         }

@@ -4,11 +4,13 @@ import Film
 import android.content.Intent
 import android.os.Bundle
 import android.text.Editable
+import android.text.InputFilter
 import android.text.TextWatcher
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.Toast
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.megamovies.moviessearch.MainActivity
 import com.megamovies.moviessearch.R
@@ -100,6 +102,7 @@ class HomeFragment : Fragment() {
 
             override fun onTextChanged(p0: CharSequence?, p1: Int, p2: Int, p3: Int) {
                 binding.disclaimer.text = p0
+//                Toast.makeText(activity, "Character limit is 5", Toast.LENGTH_SHORT).show()
             }
 
             override fun afterTextChanged(p0: Editable?) {
@@ -107,6 +110,15 @@ class HomeFragment : Fragment() {
 
         }
         binding.editTextPhone.addTextChangedListener(textWatcher)
+
+        val inputFilter = InputFilter { source, start, end, spanned, dstart, dend ->
+            if ((source.length >= 5)) {
+                Toast.makeText(activity, "Character limit is 5", Toast.LENGTH_SHORT).show()
+                return@InputFilter spanned
+            }
+            source.toString()
+        }
+        binding.editTextPhone.filters = arrayOf(inputFilter)
         return binding.root
 
 
