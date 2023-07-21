@@ -23,17 +23,12 @@ class MainActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         supportActionBar?.title = "MoviesSearcher"
+
         binding = ActivityMainBinding.inflate(layoutInflater)
         setContentView(binding.root)
         for (i in 0..9) {
             list.add("item$i")
         }
-
-
-
-
-
-
         initNavigation()
         supportFragmentManager.beginTransaction().add(R.id.fragment_placeholder, HomeFragment())
             .addToBackStack(
@@ -45,6 +40,7 @@ class MainActivity : AppCompatActivity() {
     override fun onCreateOptionsMenu(menu: Menu?): Boolean {
         menuInflater.inflate(R.menu.search_menu, menu)
         val menuItem = menu?.findItem(R.id.search)
+
         val searchView = menuItem?.actionView as SearchView
         searchView.setOnQueryTextListener(object :
             SearchView.OnQueryTextListener {
