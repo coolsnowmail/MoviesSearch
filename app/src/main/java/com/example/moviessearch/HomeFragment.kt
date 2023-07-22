@@ -1,16 +1,20 @@
 package com.example.moviessearch
 
 import Film
+import android.app.Activity
 import android.content.Intent
 import android.os.Bundle
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import androidx.appcompat.widget.SearchView
+import android.widget.Toast
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.megamovies.moviessearch.MainActivity
 import com.megamovies.moviessearch.R
 import com.megamovies.moviessearch.databinding.FragmentHomeBinding
+import java.util.Locale
 
 
 val filmsDataBase = listOf(
@@ -90,9 +94,40 @@ class HomeFragment : Fragment() {
         }
 //Кладем нашу БД в RV
         filmsAdapter.addItems(filmsDataBase)
+        binding.searchView.setOnClickListener {
+//            Toast.makeText(activity, "fsjfgjfgiofs", Toast.LENGTH_SHORT).show()
+            binding.searchView.isIconified = false
+        }
+
+
+//Подключаем слушателя изменений введенного текста в поиска
+        binding.searchView.setOnQueryTextListener(object : SearchView.OnQueryTextListener {
+            //Этот метод отрабатывает при нажатии кнопки "поиск" на софт клавиатуре
+            override fun onQueryTextSubmit(query: String?): Boolean {
+                return true
+            }
+
+            //Этот метод отрабатывает на каждое изменения текста
+            override fun onQueryTextChange(newText: String?): Boolean {
+
+                if (newText != null) {
+                    if (newText.isEmpty()) {
+                        filmsAdapter.addItems(filmsDataBase)
+                        return true
+                    }
+                    val result = filmsDataBase.filter {
+                        it.title?.contains(newText, ignoreCase = true) ?: false
+                    }
+                    filmsAdapter.addItems(result)
+                }
+                return true
+            }
+        })
+
         return binding.root
 
 
     }
 }
+
 
