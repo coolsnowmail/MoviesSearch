@@ -24,8 +24,6 @@ class MainActivity : AppCompatActivity() {
             .addToBackStack(
                 null
             ).commit()
-
-//binding.bottomNavigation.
     }
 
     var backPressed = 0L
@@ -73,14 +71,17 @@ class MainActivity : AppCompatActivity() {
                         .commit()
                     true
                 }
+
                 R.id.watch_later -> {
                     Toast.makeText(this, "Посмотреть похже", Toast.LENGTH_SHORT).show()
                     true
                 }
+
                 R.id.selections -> {
                     Toast.makeText(this, "Подборки", Toast.LENGTH_SHORT).show()
                     true
                 }
+
                 else -> false
             }
         }
