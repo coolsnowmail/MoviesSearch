@@ -3,8 +3,11 @@ package com.megamovies.moviessearch
 import Film
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import android.widget.Button
 import android.widget.Toast
 import androidx.transition.Scene
+import androidx.transition.TransitionInflater
+import androidx.transition.TransitionManager
 import com.example.moviessearch.DetailsFragment
 import com.example.moviessearch.FavoritesFragment
 import com.example.moviessearch.FilmListRecyclerAdapter
@@ -20,10 +23,24 @@ class MainActivity : AppCompatActivity() {
         supportActionBar?.title = "MoviesSearcher"
         binding = ActivityMainBinding.inflate(layoutInflater)
         setContentView(binding.root)
-        val scene1 = Scene(binding.sceneRoot, binding.text1)
-        val scene2 = Scene(binding.sceneRoot, binding.text2)
+        val scene1 = Scene.getSceneForLayout(binding.sceneRoot, R.layout.scene1, this)
+        val scene2 = Scene.getSceneForLayout(binding.sceneRoot, R.layout.scene2, this)
 
-        initNavigation()
+        val transitionManager = TransitionManager()
+        scene1.setEnterAction{
+            scene1.sceneRoot
+        }
+//        val transitionManager = TransitionInflater.from(this)
+//            .inflateTransitionManager(R.transition.t_manager, binding.sceneRoot);
+//        transitionManager.transitionTo(scene1)
+//        val button = findViewById<Button>(R.id.button)
+//        button.setOnClickListener {
+//            transitionManager.transitionTo(scene2)
+//            if (transitionManager.) {
+//                transitionManager.transitionTo(scene1)
+//            }
+//        }
+
         supportFragmentManager.beginTransaction().add(R.id.fragment_placeholder, HomeFragment())
             .addToBackStack(
                 null
