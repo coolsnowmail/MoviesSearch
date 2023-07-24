@@ -4,6 +4,7 @@ import Film
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.widget.Toast
+import androidx.transition.Scene
 import com.example.moviessearch.DetailsFragment
 import com.example.moviessearch.FavoritesFragment
 import com.example.moviessearch.FilmListRecyclerAdapter
@@ -19,6 +20,9 @@ class MainActivity : AppCompatActivity() {
         supportActionBar?.title = "MoviesSearcher"
         binding = ActivityMainBinding.inflate(layoutInflater)
         setContentView(binding.root)
+        val scene1 = Scene(binding.sceneRoot, binding.text1)
+        val scene2 = Scene(binding.sceneRoot, binding.text2)
+
         initNavigation()
         supportFragmentManager.beginTransaction().add(R.id.fragment_placeholder, HomeFragment())
             .addToBackStack(
