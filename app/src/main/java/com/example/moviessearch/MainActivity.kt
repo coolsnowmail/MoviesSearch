@@ -28,8 +28,20 @@ class MainActivity : AppCompatActivity() {
 
         val transitionManager = TransitionManager()
         scene1.setEnterAction{
-            scene1.sceneRoot
+            val button = findViewById<Button>(R.id.button)
+            button.setOnClickListener {
+                transitionManager.transitionTo(scene2)
+            }
         }
+        scene2.setEnterAction{
+            val button = findViewById<Button>(R.id.button)
+            button.setOnClickListener {
+                transitionManager.transitionTo(scene1)
+            }
+        }
+        transitionManager.transitionTo(scene1)
+
+
 //        val transitionManager = TransitionInflater.from(this)
 //            .inflateTransitionManager(R.transition.t_manager, binding.sceneRoot);
 //        transitionManager.transitionTo(scene1)
