@@ -15,8 +15,15 @@
         app:layout_constraintBottom_toTopOf="@+id/fragment_placeholder"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent">
+        app:layout_constraintTop_toTopOf="parent"
+        android:background="@color/design_default_color_error">
 
+        <TextView
+            android:id="@+id/sensor_list"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:text="Firstactivity"
+            android:gravity="center"/>
 
     </FrameLayout>
 
