@@ -1,17 +1,19 @@
 package com.megamovies.moviessearch
 
 import Film
+import android.app.ActivityOptions
+import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import android.transition.Slide
+import android.view.Gravity
+import android.view.Window
 import android.widget.Button
 import android.widget.Toast
 import androidx.transition.Scene
 import androidx.transition.TransitionInflater
 import androidx.transition.TransitionManager
-import com.example.moviessearch.DetailsFragment
-import com.example.moviessearch.FavoritesFragment
-import com.example.moviessearch.FilmListRecyclerAdapter
-import com.example.moviessearch.HomeFragment
+import com.example.moviessearch.*
 import com.megamovies.moviessearch.databinding.ActivityMainBinding
 
 
@@ -19,28 +21,47 @@ class MainActivity : AppCompatActivity() {
     private lateinit var binding: ActivityMainBinding
 
     override fun onCreate(savedInstanceState: Bundle?) {
+        window.requestFeature(Window.FEATURE_ACTIVITY_TRANSITIONS)
         super.onCreate(savedInstanceState)
         supportActionBar?.title = "MoviesSearcher"
         binding = ActivityMainBinding.inflate(layoutInflater)
         setContentView(binding.root)
-        val scene1 = Scene.getSceneForLayout(binding.sceneRoot, R.layout.scene1, this)
-        val scene2 = Scene.getSceneForLayout(binding.sceneRoot, R.layout.scene2, this)
-
-        val transitionManager = TransitionManager()
-        scene1.setEnterAction{
-            val button = findViewById<Button>(R.id.button)
-            button.setOnClickListener {
-                transitionManager.transitionTo(scene2)
-            }
+        window.exitTransition = Slide(Gravity.START).apply {
+            mode = Slide.MODE_OUT;
+            excludeTarget(android.R.id.statusBarBackground, true)
+            excludeTarget(android.R.id.navigationBarBackground, true)
         }
-        scene2.setEnterAction{
-            val button = findViewById<Button>(R.id.button)
-            button.setOnClickListener {
-                transitionManager.transitionTo(scene1)
-            }
+        // 3) setup reenterTransition
+        window.reenterTransition = Slide(Gravity.START).apply {
+            duration = 1000;
+            excludeTarget(android.R.id.statusBarBackground, true)
+            excludeTarget(android.R.id.navigationBarBackground, true)
         }
-        transitionManager.transitionTo(scene1)
+        binding.butfrst.setOnClickListener {
+            // 4) create activityOptions
+            val activityOptions = ActivityOptions.makeSceneTransitionAnimation(this)
+            startActivity(Intent(this, SecActivity::class.java), activityOptions.toBundle())
+        }
 
+
+//        val scene1 = Scene.getSceneForLayout(binding.sceneRoot, R.layout.scene1, this)
+//        val scene2 = Scene.getSceneForLayout(binding.sceneRoot, R.layout.scene2, this)
+//
+//        val transitionManager = TransitionManager()
+//        scene1.setEnterAction{
+//            val button = findViewById<Button>(R.id.button)
+//            button.setOnClickListener {
+//                transitionManager.transitionTo(scene2)
+//            }
+//        }
+//        scene2.setEnterAction{
+//            val button = findViewById<Button>(R.id.button)
+//            button.setOnClickListener {
+//                transitionManager.transitionTo(scene1)
+//            }
+//        }
+//        transitionManager.transitionTo(scene1)
+//
 
 //        val transitionManager = TransitionInflater.from(this)
 //            .inflateTransitionManager(R.transition.t_manager, binding.sceneRoot);
