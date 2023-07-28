@@ -5,6 +5,7 @@ import android.app.ActivityOptions
 import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import android.transition.Fade
 import android.transition.Slide
 import android.view.Gravity
 import android.view.Window
@@ -26,14 +27,18 @@ class MainActivity : AppCompatActivity() {
         supportActionBar?.title = "MoviesSearcher"
         binding = ActivityMainBinding.inflate(layoutInflater)
         setContentView(binding.root)
-        window.exitTransition = Slide(Gravity.START).apply {
-            mode = Slide.MODE_OUT;
+        window.exitTransition = Fade().apply {
+            duration = 1000;
+            mode = Fade.MODE_IN
             excludeTarget(android.R.id.statusBarBackground, true)
             excludeTarget(android.R.id.navigationBarBackground, true)
         }
+
+
         // 3) setup reenterTransition
-        window.reenterTransition = Slide(Gravity.START).apply {
+        window.reenterTransition = Fade().apply {
             duration = 1000;
+            mode = Fade.MODE_IN
             excludeTarget(android.R.id.statusBarBackground, true)
             excludeTarget(android.R.id.navigationBarBackground, true)
         }

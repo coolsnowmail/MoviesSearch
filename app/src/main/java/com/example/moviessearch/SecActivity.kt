@@ -4,6 +4,7 @@ import android.app.ActivityOptions
 import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import android.transition.Fade
 import android.transition.Slide
 import android.view.Gravity
 import android.view.Window
@@ -21,14 +22,16 @@ class SecActivity : AppCompatActivity() {
         setContentView(R.layout.activity_sec)
         //Transition for SecondActivity
         // 3) setup enterTransition
-        window.enterTransition = Slide(Gravity.END).apply {
+        window.enterTransition = Fade().apply {
             duration = 1000;
+            mode = Fade.MODE_IN
             excludeTarget(android.R.id.statusBarBackground, true)
             excludeTarget(android.R.id.navigationBarBackground, true)
         }
         // 4) setup returnTransition
-        window.returnTransition = Slide(Gravity.END).apply {
-            mode = Slide.MODE_OUT;
+        window.returnTransition = Fade().apply {
+            duration = 1000;
+            mode = Fade.MODE_IN
             excludeTarget(android.R.id.statusBarBackground, true)
             excludeTarget(android.R.id.navigationBarBackground, true)
         }
