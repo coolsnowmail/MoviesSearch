@@ -26,55 +26,74 @@ class SecActivity : AppCompatActivity() {
         window.allowReturnTransitionOverlap = true
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_sec)
-        //Transition for SecondActivity
-        // 3) setup enterTransition
-//        window.enterTransition = Fade().apply {
-//            mode = Fade.MODE_IN
-//            excludeTarget(android.R.id.statusBarBackground, true)
-//            excludeTarget(android.R.id.navigationBarBackground, true)
-//            excludeTarget(android.R.id.navigationBarBackground, true)
-//            addListener(onStart = {
-//                val slide = Slide()
-//                val root = findViewById<ConstraintLayout>(R.id.sec_root)
-//                val image = findViewById<ImageView>(R.id.image_view_android)
-//                image.visibility = View.INVISIBLE
-//                TransitionManager.beginDelayedTransition(root, slide)
-//                image.visibility = View.VISIBLE
-//            })
-//        }
+        val root = findViewById<ConstraintLayout>(R.id.sec_root)
+        val image = findViewById<ImageView>(R.id.image_view_android)
+
         window.enterTransition = Fade().apply {
-            duration = 1000
-            mode = Fade.MODE_IN
+            duration = 1000;
             excludeTarget(android.R.id.statusBarBackground, true)
             excludeTarget(android.R.id.navigationBarBackground, true)
             addListener(onStart = {
                 val slide = Slide()
-                slide.duration = 2000
-                val root = findViewById<ConstraintLayout>(R.id.sec_root)
-                val image = findViewById<ImageView>(R.id.image_view_android)
                 image.visibility = View.INVISIBLE
                 TransitionManager.beginDelayedTransition(root, slide)
                 image.visibility = View.VISIBLE
-
             })
-
         }
         // 4) setup returnTransition
         window.returnTransition = TransitionSet().apply {
             addTransition(Slide().apply {
                 mode = Slide.MODE_OUT
-                                val root = findViewById<ConstraintLayout>(R.id.sec_root)
-                val image = findViewById<ImageView>(R.id.image_view_android)
                 addTarget(image)
                 removeTarget(root)
+                addListener(onStart = {
+                    val slide = Slide()
+                    TransitionManager.beginDelayedTransition(root, slide)
+
+                })
             })
             addTransition(Slide(Gravity.END).apply {
+                duration = 1000
                 mode = Slide.MODE_OUT;
                 excludeTarget(android.R.id.statusBarBackground, true)
                 excludeTarget(android.R.id.navigationBarBackground, true)
             })
             ordering = TransitionSet.ORDERING_TOGETHER
         }
+
+
+//        window.enterTransition = Fade().apply {
+//            duration = 2000
+//            mode = Fade.MODE_IN
+//            excludeTarget(android.R.id.statusBarBackground, true)
+//            excludeTarget(android.R.id.navigationBarBackground, true)
+//            addListener(onStart = {
+//                val slide = Slide()
+//                slide.duration = 2000
+//                image.visibility = View.INVISIBLE
+//                TransitionManager.beginDelayedTransition(root, slide)
+//                image.visibility = View.VISIBLE
+//
+//            })
+//
+//        }
+//        window.returnTransition = TransitionSet().apply {
+//            addTransition(Slide().apply {
+//                mode = Slide.MODE_OUT
+//                duration = 5000
+//                addTarget(image)
+//                removeTarget(root)
+//            })
+//            addTransition(Slide(Gravity.END).apply {
+//                duration = 5000
+//                mode = Slide.MODE_OUT
+//                excludeTarget(android.R.id.statusBarBackground, true)
+//                excludeTarget(android.R.id.navigationBarBackground, true)
+//            })
+//            ordering = TransitionSet.ORDERING_TOGETHER
+//        }
+
+
         val button = findViewById<Button>(R.id.butsec)
         button.setOnClickListener {
             onBackPressed()
