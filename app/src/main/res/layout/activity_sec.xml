@@ -2,30 +2,31 @@
 <androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/root"
+    android:background="@color/design_default_color_error"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@color/design_default_color_primary"
-    tools:context="com.example.moviessearch.SecActivity"
-    android:id="@+id/sec_root">
+    tools:context="com.example.moviessearch.SecActivity">
 
-    <Button
-        android:id="@+id/butsec"
+    <TextView
+        android:id="@+id/text_view"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="button/"
+        android:text="SecondActivity"
+        android:textSize="25sp"
+        app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
     <ImageView
-        android:id="@+id/image_view_android"
-        android:layout_width="match_parent"
-        android:layout_height="0dp"
+        android:id="@+id/image"
+        android:layout_width="120dp"
+        android:layout_height="120dp"
+        android:src="@drawable/android_pic"
+        android:transitionName="image_name"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="1.0"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/butsec"
-        app:srcCompat="@drawable/android_pic" />
-
+        app:layout_constraintTop_toBottomOf="@id/text_view" />
 </androidx.constraintlayout.widget.ConstraintLayout>
