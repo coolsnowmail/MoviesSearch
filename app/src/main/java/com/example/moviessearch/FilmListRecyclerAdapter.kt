@@ -5,6 +5,7 @@ import android.view.LayoutInflater
 import android.view.ViewGroup
 import android.widget.AdapterView.OnItemClickListener
 import androidx.recyclerview.widget.RecyclerView
+import com.bumptech.glide.Glide
 import com.megamovies.moviessearch.databinding.FilmItemBinding
 
 class FilmListRecyclerAdapter(private val clickListener: OnItemClickListener) :
@@ -15,7 +16,14 @@ class FilmListRecyclerAdapter(private val clickListener: OnItemClickListener) :
         fun bind(film: Film) {
             itemFilmBinding.title.text = film.title
             itemFilmBinding.description.text = film.description
-            itemFilmBinding.poster.setImageResource(film.poster)
+//            itemFilmBinding.poster.setImageResource(film.poster)
+            Glide.with(itemView)
+                //Загружаем сам ресурс
+                .load(film.poster)
+                //Центруем изображение
+                .centerCrop()
+                //Указываем ImageView, куда будем загружать изображение
+                .into(itemFilmBinding.poster)
         }
     }
     private val items = mutableListOf<Film>()
