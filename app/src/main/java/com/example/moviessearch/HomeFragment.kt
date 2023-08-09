@@ -73,6 +73,11 @@ val filmsDataBase = listOf(
 )
 
 class HomeFragment : Fragment() {
+    init {
+        exitTransition = Slide(Gravity.START).apply { duration = 500;mode = Slide.MODE_OUT }
+        reenterTransition = Slide(Gravity.START).apply { duration = 500; }
+    }
+
     private lateinit var binding: FragmentHomeBinding
     private lateinit var mergebinding: MergeHomeScreenContentBinding
     private lateinit var filmsAdapter: FilmListRecyclerAdapter
@@ -88,11 +93,15 @@ class HomeFragment : Fragment() {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-        val scene = Scene.getSceneForLayout(binding.homeFragmentRoot, R.layout.merge_home_screen_content, requireContext())
+        val scene = Scene.getSceneForLayout(
+            binding.homeFragmentRoot,
+            R.layout.merge_home_screen_content,
+            requireContext()
+        )
         val searchSlide = Slide(Gravity.TOP).addTarget(R.id.search_view)
         val recyclerSlide = Slide(Gravity.BOTTOM).addTarget(R.id.main_recycler)
         val customTransition = TransitionSet().apply {
-            duration = 500
+            duration = 1000
             addTransition(recyclerSlide)
             addTransition(searchSlide)
         }
@@ -118,6 +127,7 @@ class HomeFragment : Fragment() {
             override fun onQueryTextSubmit(query: String?): Boolean {
                 return true
             }
+
             override fun onQueryTextChange(newText: String?): Boolean {
 
                 if (newText != null) {
