@@ -4,6 +4,11 @@ import Film
 import android.app.Activity
 import android.content.Intent
 import android.os.Bundle
+import android.transition.Scene
+import android.transition.Slide
+import android.transition.TransitionManager
+import android.transition.TransitionSet
+import android.view.Gravity
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
@@ -14,6 +19,7 @@ import androidx.recyclerview.widget.LinearLayoutManager
 import com.megamovies.moviessearch.MainActivity
 import com.megamovies.moviessearch.R
 import com.megamovies.moviessearch.databinding.FragmentHomeBinding
+import com.megamovies.moviessearch.databinding.MergeHomeScreenContentBinding
 import java.util.Locale
 
 
@@ -67,47 +73,61 @@ val filmsDataBase = listOf(
 )
 
 class HomeFragment : Fragment() {
+    init {
+        exitTransition = Slide(Gravity.START).apply { duration = 500;mode = Slide.MODE_OUT }
+        reenterTransition = Slide(Gravity.START).apply { duration = 500; }
+    }
+
     private lateinit var binding: FragmentHomeBinding
+    private lateinit var mergebinding: MergeHomeScreenContentBinding
     private lateinit var filmsAdapter: FilmListRecyclerAdapter
+
     override fun onCreateView(
         inflater: LayoutInflater,
         container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
         binding = FragmentHomeBinding.inflate(inflater, container, false)
-        binding.mainRecycler.apply {
-            //Инициализируем наш адаптер в конструктор передаем анонимно инициализированный интерфейс,
-            //оставим его пока пустым, он нам понадобится во второй части задания
+        return binding.root
+    }
+
+    override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
+        super.onViewCreated(view, savedInstanceState)
+        val scene = Scene.getSceneForLayout(
+            binding.homeFragmentRoot,
+            R.layout.merge_home_screen_content,
+            requireContext()
+        )
+        val searchSlide = Slide(Gravity.TOP).addTarget(R.id.search_view)
+        val recyclerSlide = Slide(Gravity.BOTTOM).addTarget(R.id.main_recycler)
+        val customTransition = TransitionSet().apply {
+            duration = 1000
+            addTransition(recyclerSlide)
+            addTransition(searchSlide)
+        }
+        TransitionManager.go(scene, customTransition)
+        mergebinding = MergeHomeScreenContentBinding.bind(binding.root)
+        mergebinding.mainRecycler.apply {
             filmsAdapter =
                 FilmListRecyclerAdapter(object : FilmListRecyclerAdapter.OnItemClickListener {
                     override fun click(film: Film) {
                         (requireActivity() as MainActivity).launchDetailsFragment(film)
                     }
                 })
-            //Присваиваем адаптер
             adapter = filmsAdapter
-            //Присвои layoutmanager
             layoutManager = LinearLayoutManager(requireContext())
-            //Применяем декоратор для отступов
             val decorator = TopSpacingItemDecoration(8)
             addItemDecoration(decorator)
         }
-//Кладем нашу БД в RV
         filmsAdapter.addItems(filmsDataBase)
-        binding.searchView.setOnClickListener {
-//            Toast.makeText(activity, "fsjfgjfgiofs", Toast.LENGTH_SHORT).show()
-            binding.searchView.isIconified = false
+        mergebinding.searchView.setOnClickListener {
+            mergebinding.searchView.isIconified = false
         }
-
-
-//Подключаем слушателя изменений введенного текста в поиска
-        binding.searchView.setOnQueryTextListener(object : SearchView.OnQueryTextListener {
-            //Этот метод отрабатывает при нажатии кнопки "поиск" на софт клавиатуре
+        mergebinding.searchView.setOnQueryTextListener(object : SearchView.OnQueryTextListener {
             override fun onQueryTextSubmit(query: String?): Boolean {
                 return true
             }
 
-            //Этот метод отрабатывает на каждое изменения текста
             override fun onQueryTextChange(newText: String?): Boolean {
 
                 if (newText != null) {
@@ -123,10 +143,6 @@ class HomeFragment : Fragment() {
                 return true
             }
         })
-
-        return binding.root
-
-
     }
 }
 

@@ -4,6 +4,8 @@ import Film
 import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import android.transition.Slide
+import android.view.Gravity
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -14,6 +16,11 @@ import com.megamovies.moviessearch.databinding.FragmentDetailsBinding
 
 
 class DetailsFragment : Fragment() {
+    init {
+        enterTransition = Slide(Gravity.END).apply { duration = 500; mode = Slide.MODE_IN }
+        returnTransition = Slide(Gravity.END).apply { duration = 500;mode = Slide.MODE_OUT }
+        exitTransition = Slide(Gravity.START).apply { duration = 500;mode = Slide.MODE_OUT }
+    }
     private lateinit var binding: FragmentDetailsBinding
 
     override fun onCreateView(
