@@ -4,11 +4,10 @@ import Film
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.widget.Toast
-import com.example.moviessearch.DetailsFragment
-import com.example.moviessearch.FavoritesFragment
-import com.example.moviessearch.FilmListRecyclerAdapter
-import com.example.moviessearch.HomeFragment
+import androidx.fragment.app.Fragment
+import com.example.moviessearch.*
 import com.megamovies.moviessearch.databinding.ActivityMainBinding
+import com.megamovies.moviessearch.databinding.FragmentSeeLaterBinding
 
 
 class MainActivity : AppCompatActivity() {
@@ -59,26 +58,45 @@ class MainActivity : AppCompatActivity() {
             .addToBackStack(null).commit()
     }
 
+    private fun checkFragmentExistence(tag: String): Fragment? = supportFragmentManager.findFragmentByTag(tag)
+
+    private fun changeFragment(fragment: Fragment, tag: String) {
+        supportFragmentManager
+            .beginTransaction()
+            .replace(R.id.fragment_placeholder, fragment, tag)
+            .addToBackStack(null)
+            .commit()
+    }
     private fun initNavigation() {
 
         binding.bottomNavigation.setOnNavigationItemSelectedListener {
 
             when (it.itemId) {
+                R.id.home -> {
+                    val tag = "home"
+                    val fragment = checkFragmentExistence(tag)
+                    changeFragment(fragment?: HomeFragment(), tag)
+                    true
+                }
+
                 R.id.favorites -> {
-                    supportFragmentManager.beginTransaction()
-                        .replace(R.id.fragment_placeholder, FavoritesFragment())
-                        .addToBackStack(null)
-                        .commit()
+                    val tag = "favorites"
+                    val fragment = checkFragmentExistence(tag)
+                    changeFragment(fragment?: FavoritesFragment(), tag)
                     true
                 }
 
                 R.id.watch_later -> {
-                    Toast.makeText(this, "Посмотреть похже", Toast.LENGTH_SHORT).show()
+                    val tag = "watch_later"
+                    val fragment = checkFragmentExistence(tag)
+                    changeFragment(fragment?: SeeLaterFragment(), tag)
                     true
                 }
 
                 R.id.selections -> {
-                    Toast.makeText(this, "Подборки", Toast.LENGTH_SHORT).show()
+                    val tag = "selections"
+                    val fragment = checkFragmentExistence(tag)
+                    changeFragment(fragment?: CollectionsFragment(), tag)
                     true
                 }
 

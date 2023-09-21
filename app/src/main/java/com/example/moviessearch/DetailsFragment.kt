@@ -16,11 +16,11 @@ import com.megamovies.moviessearch.databinding.FragmentDetailsBinding
 
 
 class DetailsFragment : Fragment() {
-    init {
-        enterTransition = Slide(Gravity.END).apply { duration = 500; mode = Slide.MODE_IN }
-        returnTransition = Slide(Gravity.END).apply { duration = 500;mode = Slide.MODE_OUT }
-        exitTransition = Slide(Gravity.START).apply { duration = 500;mode = Slide.MODE_OUT }
-    }
+//    init {
+//        enterTransition = Slide(Gravity.END).apply { duration = 500; mode = Slide.MODE_IN }
+//        returnTransition = Slide(Gravity.END).apply { duration = 500;mode = Slide.MODE_OUT }
+//        exitTransition = Slide(Gravity.START).apply { duration = 500;mode = Slide.MODE_OUT }
+//    }
     private lateinit var binding: FragmentDetailsBinding
 
     override fun onCreateView(

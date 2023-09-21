@@ -73,10 +73,10 @@ val filmsDataBase = listOf(
 )
 
 class HomeFragment : Fragment() {
-    init {
-        exitTransition = Slide(Gravity.START).apply { duration = 500;mode = Slide.MODE_OUT }
-        reenterTransition = Slide(Gravity.START).apply { duration = 500; }
-    }
+//    init {
+//        exitTransition = Slide(Gravity.START).apply { duration = 500;mode = Slide.MODE_OUT }
+//        reenterTransition = Slide(Gravity.START).apply { duration = 500; }
+//    }
 
     private lateinit var binding: FragmentHomeBinding
     private lateinit var mergebinding: MergeHomeScreenContentBinding
@@ -93,6 +93,7 @@ class HomeFragment : Fragment() {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
+        AnimationHelper.performFragmentCircularRevealAnimation(binding.homeFragmentRoot, requireActivity(), 1)
         val scene = Scene.getSceneForLayout(
             binding.homeFragmentRoot,
             R.layout.merge_home_screen_content,

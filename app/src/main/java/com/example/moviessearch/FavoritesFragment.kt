@@ -14,12 +14,12 @@ import com.megamovies.moviessearch.databinding.FragmentDetailsBinding
 import com.megamovies.moviessearch.databinding.FragmentFavoritesBinding
 
 class FavoritesFragment : Fragment() {
-    init {
-        enterTransition = Slide(Gravity.END).apply { duration = 500; mode = Slide.MODE_IN }
-        returnTransition = Slide(Gravity.END).apply { duration = 500;mode = Slide.MODE_OUT }
-        exitTransition = Slide(Gravity.START).apply { duration = 500;mode = Slide.MODE_OUT }
-
-    }
+//    init {
+//        enterTransition = Slide(Gravity.END).apply { duration = 500; mode = Slide.MODE_IN }
+//        returnTransition = Slide(Gravity.END).apply { duration = 500;mode = Slide.MODE_OUT }
+//        exitTransition = Slide(Gravity.START).apply { duration = 500;mode = Slide.MODE_OUT }
+//
+//    }
     val favoritesList: MutableList<Film> = mutableListOf()
     private lateinit var binding: FragmentFavoritesBinding
 
@@ -35,25 +35,8 @@ class FavoritesFragment : Fragment() {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-        for (i in filmsDataBase) {
-            if (i.isFavorites) {
-                favoritesList += i
-            }
-        }
+        AnimationHelper.performFragmentCircularRevealAnimation(binding.favoritesFragmentRoot, requireActivity(), 1)
 
-        val filmsAdapter: FilmListRecyclerAdapter
-        binding.favoritesRecycler.apply {
-            filmsAdapter =
-                FilmListRecyclerAdapter(object : FilmListRecyclerAdapter.OnItemClickListener {
-                    override fun click(film: Film) {
-                        (requireActivity() as MainActivity).launchDetailsFragment(film)
-                    }
-                })
-            adapter = filmsAdapter
-            layoutManager = LinearLayoutManager(requireContext())
-            val decorator = TopSpacingItemDecoration(8)
-            addItemDecoration(decorator)
-        }
-        filmsAdapter.addItems(favoritesList)
+
     }
 }
