@@ -7,10 +7,9 @@
     android:background="@drawable/collor1_for_see_later"
     tools:context="com.example.moviessearch.SeeLaterFragment">
 
-    <com.example.moviessearch.CustomView
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:id="@+id/custom_view"
-        app:stroke_width="100"/>
+
+    <com.example.moviessearch.ClockView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"/>
 
 </FrameLayout>
