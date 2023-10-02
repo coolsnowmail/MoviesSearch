@@ -6,6 +6,7 @@ plugins {
 android {
     namespace 'com.megamovies.moviessearch'
     compileSdk 33
+    apply plugin: 'kotlin-kapt'
 
     defaultConfig {
         applicationId "com.megamovies.moviessearch"
@@ -20,6 +21,11 @@ android {
     viewBinding {
         enabled = true
     }
+
+    dataBinding {
+        enabled = true
+    }
+
 
     buildTypes {
         release {

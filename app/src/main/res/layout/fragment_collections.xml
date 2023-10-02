@@ -3,7 +3,7 @@ xmlns:tools="http://schemas.android.com/tools"
 android:layout_width="match_parent"
 android:layout_height="match_parent"
 android:background="@drawable/collor3_for_collections"
-tools:context="com.example.moviessearch.CollectionsFragment">
+tools:context="com.example.moviessearch.view.fragments.CollectionsFragment">
 
 
 </FrameLayout>

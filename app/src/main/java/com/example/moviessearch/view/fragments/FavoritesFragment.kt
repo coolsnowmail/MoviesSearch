@@ -1,16 +1,12 @@
-package com.example.moviessearch
+package com.example.moviessearch.view.fragments
 
-import Film
+import com.example.moviessearch.domain.Film
 import android.os.Bundle
-import android.transition.Slide
-import android.view.Gravity
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import androidx.recyclerview.widget.LinearLayoutManager
-import com.megamovies.moviessearch.MainActivity
-import com.megamovies.moviessearch.databinding.FragmentDetailsBinding
+import com.example.moviessearch.utils.AnimationHelper
 import com.megamovies.moviessearch.databinding.FragmentFavoritesBinding
 
 class FavoritesFragment : Fragment() {

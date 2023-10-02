@@ -1,3 +1,5 @@
+package com.example.moviessearch.domain
+
 import android.os.Parcel
 import android.os.Parcelable
 
@@ -5,6 +7,7 @@ data class Film(
     val title: String?,
     val poster: Int,
     val description: String?,
+    var rating: Float = 0f,
     var isFavorites: Boolean = false
 ): Parcelable {
     constructor(parcel: Parcel) : this(

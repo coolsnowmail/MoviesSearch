@@ -1,13 +1,14 @@
-package com.megamovies.moviessearch
+package com.example.moviessearch.view
 
-import Film
+import com.example.moviessearch.domain.Film
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.widget.Toast
 import androidx.fragment.app.Fragment
 import com.example.moviessearch.*
+import com.example.moviessearch.view.fragments.*
+import com.megamovies.moviessearch.R
 import com.megamovies.moviessearch.databinding.ActivityMainBinding
-import com.megamovies.moviessearch.databinding.FragmentSeeLaterBinding
 
 
 class MainActivity : AppCompatActivity() {
