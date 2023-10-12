@@ -5,11 +5,20 @@ import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.widget.Toast
 import androidx.fragment.app.Fragment
+import com.bumptech.glide.RequestBuilder
 import com.example.moviessearch.*
 import com.example.moviessearch.view.fragments.*
 import com.google.gson.Gson
 import com.megamovies.moviessearch.R
 import com.megamovies.moviessearch.databinding.ActivityMainBinding
+import okhttp3.*
+import java.io.BufferedReader
+import java.io.IOException
+import java.io.InputStreamReader
+import java.net.URL
+import java.util.concurrent.Executor
+import java.util.concurrent.Executors
+import javax.net.ssl.HttpsURLConnection
 
 
 class MainActivity : AppCompatActivity() {
@@ -27,28 +36,43 @@ class MainActivity : AppCompatActivity() {
             ).commit()
 
 
+        //        task 34.5.1
+        Executors.newSingleThreadExecutor().execute {
+            val url = URL("https://reqres.in/api/users/2")
+            val connection = url.openConnection() as HttpsURLConnection
+            try {
+                val bufferReader = BufferedReader(InputStreamReader(connection.inputStream))
+                val line = bufferReader.readLine()
+                println("!!!! HttpsURLConnection $line")
+            } finally {
+                connection.disconnect()
+            }
+        }
 
+        val client = OkHttpClient()
+        val request = Request.Builder()
+            .url("https://reqres.in/api/users/2")
+            .build()
+        client.newCall(request).enqueue(object: Callback {
+            override fun onFailure(call: Call, e: IOException) {
+                e.printStackTrace()
+            }
 
-        //        task 34.4.1
-        val data = Data("avatar", "sasdsa@fdfd.ru", "Coco", 123, "Coci")
+            override fun onResponse(call: Call, response: Response) {
+                try {
+                    val responseBody = response.body()
+                    println("!!!! OkHttpClient ${responseBody?.string()}")
+                } catch (e:Exception) {
+                    println(response)
+                    e.printStackTrace()
+                }
+            }
+
+        })
+
         val gson = Gson()
-        val input = gson.toJson(data)
-        println("!!! $input")
-//        val output = gson.fromJson(input, Data::class.java)
-        //        task 34.4.1
+        //        task 34.5.1
     }
-
-    //        task 34.4.1
-    data class Data(
-        val avatar: String,
-        val email: String,
-        val firstName: String,
-        val id: Int,
-        val lastName: String
-    )
-    //        task 34.4.1
-
-
 
     var backPressed = 0L
 
