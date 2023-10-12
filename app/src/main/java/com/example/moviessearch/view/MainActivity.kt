@@ -7,6 +7,7 @@ import android.widget.Toast
 import androidx.fragment.app.Fragment
 import com.example.moviessearch.*
 import com.example.moviessearch.view.fragments.*
+import com.google.gson.Gson
 import com.megamovies.moviessearch.R
 import com.megamovies.moviessearch.databinding.ActivityMainBinding
 
@@ -24,7 +25,30 @@ class MainActivity : AppCompatActivity() {
             .addToBackStack(
                 null
             ).commit()
+
+
+
+
+        //        task 34.4.1
+        val data = Data("avatar", "sasdsa@fdfd.ru", "Coco", 123, "Coci")
+        val gson = Gson()
+        val input = gson.toJson(data)
+        println("!!! $input")
+//        val output = gson.fromJson(input, Data::class.java)
+        //        task 34.4.1
     }
+
+    //        task 34.4.1
+    data class Data(
+        val avatar: String,
+        val email: String,
+        val firstName: String,
+        val id: Int,
+        val lastName: String
+    )
+    //        task 34.4.1
+
+
 
     var backPressed = 0L
 
@@ -59,7 +83,8 @@ class MainActivity : AppCompatActivity() {
             .addToBackStack(null).commit()
     }
 
-    private fun checkFragmentExistence(tag: String): Fragment? = supportFragmentManager.findFragmentByTag(tag)
+    private fun checkFragmentExistence(tag: String): Fragment? =
+        supportFragmentManager.findFragmentByTag(tag)
 
     private fun changeFragment(fragment: Fragment, tag: String) {
         supportFragmentManager
@@ -68,6 +93,7 @@ class MainActivity : AppCompatActivity() {
             .addToBackStack(null)
             .commit()
     }
+
     private fun initNavigation() {
 
         binding.bottomNavigation.setOnNavigationItemSelectedListener {
@@ -76,28 +102,28 @@ class MainActivity : AppCompatActivity() {
                 R.id.home -> {
                     val tag = "home"
                     val fragment = checkFragmentExistence(tag)
-                    changeFragment(fragment?: HomeFragment(), tag)
+                    changeFragment(fragment ?: HomeFragment(), tag)
                     true
                 }
 
                 R.id.favorites -> {
                     val tag = "favorites"
                     val fragment = checkFragmentExistence(tag)
-                    changeFragment(fragment?: FavoritesFragment(), tag)
+                    changeFragment(fragment ?: FavoritesFragment(), tag)
                     true
                 }
 
                 R.id.watch_later -> {
                     val tag = "watch_later"
                     val fragment = checkFragmentExistence(tag)
-                    changeFragment(fragment?: SeeLaterFragment(), tag)
+                    changeFragment(fragment ?: SeeLaterFragment(), tag)
                     true
                 }
 
                 R.id.selections -> {
                     val tag = "selections"
                     val fragment = checkFragmentExistence(tag)
-                    changeFragment(fragment?: CollectionsFragment(), tag)
+                    changeFragment(fragment ?: CollectionsFragment(), tag)
                     true
                 }
 
