@@ -12,6 +12,8 @@ import com.example.moviessearch.utils.AnimationHelper
 import com.google.gson.Gson
 import com.megamovies.moviessearch.databinding.FragmentFavoritesBinding
 import okhttp3.*
+import retrofit2.Retrofit
+import retrofit2.converter.gson.GsonConverterFactory
 import java.io.BufferedReader
 import java.io.IOException
 import java.io.InputStreamReader
@@ -40,27 +42,9 @@ class FavoritesFragment : Fragment() {
             requireActivity(),
             1
         )
-        val client = OkHttpClient()
-        val request = Request.Builder()
-            .url("https://reqres.in/api/users/2")
-            .build()
-        client.newCall(request).enqueue(object : Callback {
-            override fun onFailure(call: Call, e: IOException) {
-                e.printStackTrace()
-            }
-
-            override fun onResponse(call: Call, response: Response) {
-                try {
-                    val responseBody = response.body()
-                    println("!!!! OkHttpClient ${responseBody?.string()}")
-                    val gson = Gson()
-                    val input = gson.fromJson(responseBody?.string(), User::class.java)
-                    println("!!!! ${input}")
-                } catch (e: Exception) {
-                    println(response)
-                    e.printStackTrace()
-                }
-            }
-        })
+       val rentofit = Retrofit.Builder()
+           .baseUrl("https://reqres.in/")
+           .addConverterFactory(GsonConverterFactory.create())
+           .build()
     }
 }
