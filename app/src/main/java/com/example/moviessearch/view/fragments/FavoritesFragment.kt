@@ -6,20 +6,15 @@ import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import com.example.moviessearch.API
-import com.example.moviessearch.data.User
+import com.example.moviessearch.RetrofitInterface
 import com.example.moviessearch.utils.AnimationHelper
-import com.google.gson.Gson
 import com.megamovies.moviessearch.databinding.FragmentFavoritesBinding
-import okhttp3.*
+import kotlinx.coroutines.CoroutineScope
+import kotlinx.coroutines.Dispatchers
+import kotlinx.coroutines.launch
 import retrofit2.Retrofit
 import retrofit2.converter.gson.GsonConverterFactory
-import java.io.BufferedReader
-import java.io.IOException
-import java.io.InputStreamReader
-import java.net.URL
-import java.util.concurrent.Executors
-import javax.net.ssl.HttpsURLConnection
+
 
 class FavoritesFragment : Fragment() {
     val favoritesList: MutableList<Film> = mutableListOf()
@@ -42,9 +37,15 @@ class FavoritesFragment : Fragment() {
             requireActivity(),
             1
         )
-       val rentofit = Retrofit.Builder()
-           .baseUrl("https://reqres.in/")
-           .addConverterFactory(GsonConverterFactory.create())
-           .build()
+
+        val retrofit = Retrofit.Builder()
+            .baseUrl("https://dummyjson.com/")
+            .addConverterFactory(GsonConverterFactory.create())
+            .build()
+        val productApi = retrofit.create(RetrofitInterface::class.java)
+        CoroutineScope(Dispatchers.IO).launch {
+            val product = productApi.productById(3)
+            println("!!!! ${product.title}")
+        }
     }
 }
