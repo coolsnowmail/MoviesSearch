@@ -6,8 +6,11 @@ import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import com.bumptech.glide.Glide
 import com.example.moviessearch.RetrofitInterface
+import com.example.moviessearch.data.Product
 import com.example.moviessearch.utils.AnimationHelper
+import com.megamovies.moviessearch.R
 import com.megamovies.moviessearch.databinding.FragmentFavoritesBinding
 import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.Dispatchers
@@ -40,22 +43,27 @@ class FavoritesFragment : Fragment() {
             1
         )
 
-        val interceptor = HttpLoggingInterceptor()
-        interceptor.level = HttpLoggingInterceptor.Level.BODY
+        Glide.with(this)
+            .load("https://memepedia.ru/wp-content/uploads/2018/12/in_article_11341c19c0-768x768.jpg")
+            .into(binding.imageView)
 
-        val client = OkHttpClient.Builder()
-            .addInterceptor(interceptor)
-            .build()
-
-        val retrofit = Retrofit.Builder()
-            .baseUrl("https://dummyjson.com/")
-            .client(client)
-            .addConverterFactory(GsonConverterFactory.create())
-            .build()
-        val productApi = retrofit.create(RetrofitInterface::class.java)
-        CoroutineScope(Dispatchers.IO).launch {
-            val product = productApi.productById(3)
-            println("!!!! ${product.title}")
-        }
+// 35.2 work with json
+//        val interceptor = HttpLoggingInterceptor()
+//        interceptor.level = HttpLoggingInterceptor.Level.BODY
+//
+//        val client = OkHttpClient.Builder()
+//            .addInterceptor(interceptor)
+//            .build()
+//
+//        val retrofit = Retrofit.Builder()
+//            .baseUrl("https://dummyjson.com/")
+//            .client(client)
+//            .addConverterFactory(GsonConverterFactory.create())
+//            .build()
+//        val productApi = retrofit.create(RetrofitInterface::class.java)
+//        CoroutineScope(Dispatchers.IO).launch {
+//            val product = productApi.productById(3)
+//            println("!!!! ${product.title}")
+//        }
     }
 }
