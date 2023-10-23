@@ -30,48 +30,15 @@ class MainActivity : AppCompatActivity() {
         binding = ActivityMainBinding.inflate(layoutInflater)
         setContentView(binding.root)
         initNavigation()
-        supportFragmentManager.beginTransaction().add(R.id.fragment_placeholder, HomeFragment())
+        supportFragmentManager
+            .beginTransaction()
+            .add(R.id.fragment_placeholder, HomeFragment())
             .addToBackStack(
                 null
-            ).commit()
+            )
+            .commit()
 
 
-        //        task 34.5.1
-        Executors.newSingleThreadExecutor().execute {
-            val url = URL("https://reqres.in/api/users/2")
-            val connection = url.openConnection() as HttpsURLConnection
-            try {
-                val bufferReader = BufferedReader(InputStreamReader(connection.inputStream))
-                val line = bufferReader.readLine()
-                println("!!!! HttpsURLConnection $line")
-            } finally {
-                connection.disconnect()
-            }
-        }
-
-        val client = OkHttpClient()
-        val request = Request.Builder()
-            .url("https://reqres.in/api/users/2")
-            .build()
-        client.newCall(request).enqueue(object: Callback {
-            override fun onFailure(call: Call, e: IOException) {
-                e.printStackTrace()
-            }
-
-            override fun onResponse(call: Call, response: Response) {
-                try {
-                    val responseBody = response.body()
-                    println("!!!! OkHttpClient ${responseBody?.string()}")
-                } catch (e:Exception) {
-                    println(response)
-                    e.printStackTrace()
-                }
-            }
-
-        })
-
-        val gson = Gson()
-        //        task 34.5.1
     }
 
     var backPressed = 0L
@@ -103,8 +70,11 @@ class MainActivity : AppCompatActivity() {
         val fragment = DetailsFragment()
         fragment.arguments = bundle
 
-        supportFragmentManager.beginTransaction().replace(R.id.fragment_placeholder, fragment)
-            .addToBackStack(null).commit()
+        supportFragmentManager
+            .beginTransaction()
+            .replace(R.id.fragment_placeholder, fragment)
+            .addToBackStack(null)
+            .commit()
     }
 
     private fun checkFragmentExistence(tag: String): Fragment? =

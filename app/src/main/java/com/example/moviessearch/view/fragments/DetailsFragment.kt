@@ -7,6 +7,8 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.Fragment
+import com.bumptech.glide.Glide
+import com.example.moviessearch.data.internet.ApiConstants
 import com.megamovies.moviessearch.R
 import com.megamovies.moviessearch.databinding.FragmentDetailsBinding
 
@@ -28,20 +30,24 @@ class DetailsFragment : Fragment() {
         val film = arguments?.get("film") as Film
         binding.detailsToolbar.title = film.title
 //Устанавливаем картинку
-        binding.detailsPoster.setImageResource(film.poster)
+        Glide.with(this)
+            .load(ApiConstants.IMAGES_URL+"w780"+film.poster)
+            .centerCrop()
+            .into(binding.detailsPoster)
+//        binding.detailsPoster.setImageResource(film.poster)
 //Устанавливаем описание
         binding.detailsDescription.text = film.description
         binding.detailsFabFavorites.setImageResource(
-            if (film.isFavorites) R.drawable.baseline_favorite_24
+            if (film.isInFavorites) R.drawable.baseline_favorite_24
             else R.drawable.baseline_favorite_border_24
         )
         binding.detailsFabFavorites.setOnClickListener {
-            if (!film.isFavorites) {
+            if (!film.isInFavorites) {
                 binding.detailsFabFavorites.setImageResource(R.drawable.baseline_favorite_24)
-                film.isFavorites = true
+                film.isInFavorites = true
             } else {
                 binding.detailsFabFavorites.setImageResource(R.drawable.baseline_favorite_border_24)
-                film.isFavorites = false
+                film.isInFavorites = false
             }
         }
 
