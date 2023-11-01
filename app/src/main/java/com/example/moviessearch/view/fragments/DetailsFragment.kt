@@ -7,19 +7,57 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.Fragment
+import androidx.lifecycle.MutableLiveData
+import androidx.lifecycle.Observer
 import com.bumptech.glide.Glide
+import com.example.moviessearch.App
 import com.example.moviessearch.data.internet.ApiConstants
+import com.example.moviessearch.data.internet.KinopoiskApi
+import com.example.moviessearch.data.internet.ResultKinopoiskDto
+import com.example.moviessearch.data.internet.individual_film.FilmKinopoiskApiDto
+import com.example.moviessearch.data.internet.individual_film.GetFilmDescriptionFromApi
+import com.example.moviessearch.domain.Interactor
+import com.example.moviessearch.utils.Converter
+import com.example.moviessearch.viewmodel.HomeFragmentViewModel
+import com.megamovies.moviessearch.BuildConfig
 import com.megamovies.moviessearch.R
 import com.megamovies.moviessearch.databinding.FragmentDetailsBinding
+import okhttp3.OkHttpClient
+import okhttp3.logging.HttpLoggingInterceptor
+import retrofit2.Call
+import retrofit2.Callback
+import retrofit2.Response
+import retrofit2.Retrofit
+import retrofit2.converter.gson.GsonConverterFactory
+import java.util.concurrent.TimeUnit
 
 
 class DetailsFragment : Fragment() {
-//    init {
+    //    init {
 //        enterTransition = Slide(Gravity.END).apply { duration = 500; mode = Slide.MODE_IN }
 //        returnTransition = Slide(Gravity.END).apply { duration = 500;mode = Slide.MODE_OUT }
 //        exitTransition = Slide(Gravity.START).apply { duration = 500;mode = Slide.MODE_OUT }
 //    }
     private lateinit var binding: FragmentDetailsBinding
+    val filmLiveData = MutableLiveData<String>()
+    private var getFilmDescriptionFromApi: GetFilmDescriptionFromApi =
+        App.instance.getFilmDescriptionFromApi
+
+
+//    init {
+//        getFilmDescriptionFromApi.getFilmsFromApi(
+//            film.id,
+//            object : DetailsFragment.ApiFilmCallBack {
+//                override fun onSuccess(filmDescription: String) {
+//                    filmLiveData.postValue(filmDescription)
+//                }
+//
+//                override fun onFailure() {
+//                    println("!!!! ApiCallBack interface in HomeFragmentViewModel is onFailure")
+//                }
+//
+//            })
+//    }
 
     override fun onCreateView(
         inflater: LayoutInflater,
@@ -28,6 +66,26 @@ class DetailsFragment : Fragment() {
     ): View? {
         binding = FragmentDetailsBinding.inflate(inflater, container, false)
         val film = arguments?.get("film") as Film
+
+        getFilmDescriptionFromApi.getFilmsFromApi(
+            film.id,
+            object : DetailsFragment.ApiFilmCallBack {
+                override fun onSuccess(filmDescription: String) {
+                    filmLiveData.postValue(filmDescription)
+                    println("!!!! onFailure100 ${filmDescription}")
+                }
+
+                override fun onFailure() {
+                    println("!!!! ApiCallBack interface in HomeFragmentViewModel is onFailure")
+                }
+
+            })
+
+        filmLiveData.observe(viewLifecycleOwner,
+            Observer<String> {
+                binding.detailsDescription.text = it
+            })
+
         binding.detailsToolbar.title = film.title
 //Устанавливаем картинку
         Glide.with(this)
@@ -36,6 +94,7 @@ class DetailsFragment : Fragment() {
             .into(binding.detailsPoster)
 //        binding.detailsPoster.setImageResource(film.poster)
 //Устанавливаем описание
+
         binding.detailsDescription.text = film.description
         binding.detailsFabFavorites.setImageResource(
             if (film.isInFavorites) R.drawable.baseline_favorite_24
@@ -54,8 +113,10 @@ class DetailsFragment : Fragment() {
         binding.detailsFab.setOnClickListener {
             val intent = Intent()
             intent.action = Intent.ACTION_SEND
-            intent.putExtra(Intent.EXTRA_TEXT, "Check out this film: ${film.title} \n\n" +
-                    "${film.description}")
+            intent.putExtra(
+                Intent.EXTRA_TEXT, "Check out this film: ${film.title} \n\n" +
+                        "${film.description}"
+            )
             intent.type = "test/plain"
             startActivity(Intent.createChooser(intent, "Share To:"))
 
@@ -64,4 +125,10 @@ class DetailsFragment : Fragment() {
 
         return binding.root
     }
+
+    interface ApiFilmCallBack {
+        fun onSuccess(filmDescription: String)
+        fun onFailure()
+    }
 }
+

@@ -1,11 +1,9 @@
 package com.example.moviessearch.view.rv_viewholders
 
-import android.annotation.SuppressLint
 import androidx.recyclerview.widget.RecyclerView
 import com.bumptech.glide.Glide
-import com.example.moviessearch.data.internet.ApiConstants
+import com.example.moviessearch.utils.ConvertContriesToString
 import com.example.moviessearch.domain.Film
-import com.megamovies.moviessearch.R
 import com.megamovies.moviessearch.databinding.FilmItemBinding
 
 class FilmViewHolder(private val itemFilmBinding: FilmItemBinding) :
@@ -13,7 +11,8 @@ class FilmViewHolder(private val itemFilmBinding: FilmItemBinding) :
 
     fun bind(film: Film) {
         itemFilmBinding.title.text = film.title
-        itemFilmBinding.year.text = R.string.film_year.toString()
+        itemFilmBinding.year.text = "Год релиза: ${film.year}"
+        itemFilmBinding.contry.text = "Страна: ${ConvertContriesToString.convert(film.countries)}"
         itemFilmBinding.ratingDonut.setProgress((film.rating * 10).toInt())
 //            itemFilmBinding.poster.setImageResource(film.poster)
         Glide.with(itemView)

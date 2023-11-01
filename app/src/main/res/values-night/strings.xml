@@ -2,4 +2,6 @@
 <resources>
     <string name="menu_settings_title">Search it!</string>
     <string name="menu_selections_title">Подборки</string>
+    <string name="film_country">Страна</string>
+    <string name="film_year">Год</string>
 </resources>
