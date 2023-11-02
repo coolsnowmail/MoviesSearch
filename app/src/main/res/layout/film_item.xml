@@ -25,8 +25,8 @@
         <ImageView
             android:id="@+id/poster"
             android:layout_width="150dp"
-            android:scaleType="centerCrop"
             android:layout_height="match_parent"
+            android:scaleType="centerCrop"
             app:layout_constraintLeft_toLeftOf="parent"
             app:layout_constraintTop_toTopOf="parent"
             tools:src="@tools:sample/avatars" />
@@ -35,8 +35,8 @@
             android:id="@+id/title"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
-            android:textAlignment="center"
             android:padding="8dp"
+            android:textAlignment="center"
             android:textAppearance="@style/TextAppearance.AppCompat.Headline"
             app:layout_constraintLeft_toRightOf="@+id/poster"
             app:layout_constraintRight_toRightOf="parent"
@@ -44,13 +44,29 @@
             tools:text="Title" />
 
         <TextView
-            android:id="@+id/description"
+            android:id="@+id/contry"
             android:layout_width="0dp"
             android:layout_height="0dp"
             android:padding="8dp"
+            android:textAlignment="center"
             app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.5"
             app:layout_constraintLeft_toRightOf="@+id/poster"
             app:layout_constraintRight_toRightOf="parent"
+            app:layout_constraintStart_toStartOf="@+id/title"
+            app:layout_constraintTop_toBottomOf="@+id/year"
+            tools:text="@tools:sample/lorem/random" />
+
+        <TextView
+            android:id="@+id/year"
+            android:layout_width="261dp"
+            android:layout_height="0dp"
+            android:padding="8dp"
+            android:textAlignment="center"
+            app:layout_constraintBottom_toTopOf="@+id/contry"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toEndOf="@+id/poster"
             app:layout_constraintTop_toBottomOf="@+id/title"
             tools:text="@tools:sample/lorem/random" />
 

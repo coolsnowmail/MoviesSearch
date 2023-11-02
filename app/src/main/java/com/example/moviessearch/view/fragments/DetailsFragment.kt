@@ -31,7 +31,7 @@ class DetailsFragment : Fragment() {
         binding.detailsToolbar.title = film.title
 //Устанавливаем картинку
         Glide.with(this)
-            .load(ApiConstants.IMAGES_URL+"w780"+film.poster)
+            .load(film.poster)
             .centerCrop()
             .into(binding.detailsPoster)
 //        binding.detailsPoster.setImageResource(film.poster)

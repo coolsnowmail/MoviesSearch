@@ -1,19 +1,19 @@
 package com.example.moviessearch.utils
 
-import com.example.moviessearch.data.internet.TmdbFilm
+import com.example.moviessearch.data.internet.Item
 import com.example.moviessearch.domain.Film
 
 
 object Converter {
-    fun convertApiListToDtoList(list: List<TmdbFilm>?): List<Film> {
+    fun convertApiListToDtoList(list: List<Item>?): List<Film> {
         val result = mutableListOf<Film>()
         list?.forEach {
             result.add(Film(
-                title = it.title,
-                poster = it.posterPath,
-                description = it.overview,
-                rating = it.voteAverage
-            ))
+                title = it.nameRu,
+                poster = it.posterUrl,
+                year = it.year,
+                rating = it.ratingImdb)
+            )
         }
         return result
     }

@@ -2,8 +2,7 @@ package com.example.moviessearch.domain
 
 import com.example.moviessearch.API
 import com.example.moviessearch.data.MainRepository
-import com.example.moviessearch.data.internet.TmdbApi
-import com.example.moviessearch.data.internet.TmdbResultsDto
+import com.example.moviessearch.data.internet.*
 import com.example.moviessearch.utils.Converter
 import com.example.moviessearch.viewmodel.HomeFragmentViewModel
 import retrofit2.Call
@@ -11,19 +10,19 @@ import retrofit2.Callback
 import retrofit2.Response
 
 
-class Interactor(private val retrofitService: TmdbApi) {
+class Interactor(private val retrofitService: KinopoiskApi) {
     fun getFilmsFromApi(page: Int, callback: HomeFragmentViewModel.ApiCallBack) {
-        retrofitService.getFilms(API.KEY, "ru-RU", page)
-            .enqueue(object : Callback<TmdbResultsDto> {
+        retrofitService.getCollection(ApiConstants.TYPE_COLLECTION, page)
+            .enqueue(object : Callback<ResultKinopoiskDto> {
                 override fun onResponse(
-                    call: Call<TmdbResultsDto>,
-                    response: Response<TmdbResultsDto>
+                    call: Call<ResultKinopoiskDto>,
+                    response: Response<ResultKinopoiskDto>
                 ) {
                     println("!!!! ${response.body()}")
-                    callback.onSuccess(Converter.convertApiListToDtoList(response.body()?.tmdbFilms))
+                    callback.onSuccess(Converter.convertApiListToDtoList(response.body()?.items))
                 }
 
-                override fun onFailure(call: Call<TmdbResultsDto>, t: Throwable) {
+                override fun onFailure(call: Call<ResultKinopoiskDto>, t: Throwable) {
                     println("!!!! onFailure2")
                     callback.onFailure()
                 }

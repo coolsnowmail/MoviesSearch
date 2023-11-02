@@ -1,17 +1,14 @@
 package com.example.moviessearch
 
 import android.app.Application
-import androidx.lifecycle.ViewModelProvider.NewInstanceFactory.Companion.instance
-import com.example.moviessearch.data.MainRepository
 import com.example.moviessearch.data.internet.ApiConstants
-import com.example.moviessearch.data.internet.TmdbApi
+import com.example.moviessearch.data.internet.KinopoiskApi
 import com.example.moviessearch.domain.Interactor
 import com.megamovies.moviessearch.BuildConfig
 import okhttp3.OkHttpClient
 import okhttp3.logging.HttpLoggingInterceptor
 import retrofit2.Retrofit
 import retrofit2.converter.gson.GsonConverterFactory
-import retrofit2.create
 import java.util.concurrent.TimeUnit
 
 class App : Application() {
@@ -34,7 +31,7 @@ class App : Application() {
             .addConverterFactory(GsonConverterFactory.create())
             .client(okHttpClient)
             .build()
-        val retrofitService = retrofit.create(TmdbApi::class.java)
+        val retrofitService = retrofit.create(KinopoiskApi::class.java)
         interactor = Interactor(retrofitService)
 
     }
