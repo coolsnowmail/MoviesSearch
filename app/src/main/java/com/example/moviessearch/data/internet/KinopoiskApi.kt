@@ -1,6 +1,5 @@
 package com.example.moviessearch.data.internet
 
-import com.example.moviessearch.API
 import com.example.moviessearch.data.internet.individual_film.FilmKinopoiskApiDto
 import retrofit2.Call
 import retrofit2.http.GET
