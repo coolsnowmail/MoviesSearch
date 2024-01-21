@@ -12,6 +12,16 @@
         android:layout_width="match_parent"
         android:layout_height="match_parent">
 
+        <com.example.moviessearch.view.customviews.RatingDonutView
+            android:id="@+id/rating_donut"
+            android:layout_width="50dp"
+            android:layout_height="50dp"
+            android:translationZ="11dp"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:progress="90"
+            app:stroke="10" />
+
         <ImageView
             android:id="@+id/poster"
             android:layout_width="150dp"

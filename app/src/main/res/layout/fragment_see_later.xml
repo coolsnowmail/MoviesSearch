@@ -1,0 +1,13 @@
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:id="@+id/see_later_fragment_root"
+    android:background="@drawable/collor1_for_see_later"
+    tools:context="com.example.moviessearch.view.fragments.SeeLaterFragment">
+
+
+
+
+</FrameLayout>

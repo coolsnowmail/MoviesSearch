@@ -6,6 +6,7 @@ plugins {
 android {
     namespace 'com.megamovies.moviessearch'
     compileSdk 33
+    apply plugin: 'kotlin-kapt'
 
     defaultConfig {
         applicationId "com.megamovies.moviessearch"
@@ -20,6 +21,11 @@ android {
     viewBinding {
         enabled = true
     }
+
+    dataBinding {
+        enabled = true
+    }
+
 
     buildTypes {
         release {
@@ -45,6 +51,17 @@ dependencies {
     androidTestImplementation 'androidx.test.ext:junit:1.1.5'
     androidTestImplementation 'androidx.test.espresso:espresso-core:3.5.1'
     //Glide
+    implementation 'com.github.bumptech.glide:glide:4.11.0'
+    annotationProcessor 'com.github.bumptech.glide:compiler:4.11.0'
+//    gson
+    implementation 'com.google.code.gson:gson:2.10.1'
+    //okhttp
+    implementation 'com.squareup.retrofit2:retrofit:2.9.0'
+    implementation 'com.squareup.okhttp3:logging-interceptor:4.7.2'
+    //retrofit2
+    implementation 'com.squareup.okhttp3:okhttp:4.7.2'
+    implementation 'com.squareup.retrofit2:converter-gson:2.9.0'
+//  glide internet pictures
     implementation 'com.github.bumptech.glide:glide:4.11.0'
     annotationProcessor 'com.github.bumptech.glide:compiler:4.11.0'
 }
