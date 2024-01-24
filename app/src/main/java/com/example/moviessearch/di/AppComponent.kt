@@ -9,6 +9,8 @@ import dagger.Component
 
 @Component(modules = [RemoteModule::class, DatabaseModule::class, DomainModule::class])
 interface AppComponent {
+
     fun inject(homeFragmentViewModel: HomeFragmentViewModel)
+
     fun inject(detailsFragment: DetailsFragment)
 }

@@ -8,6 +8,5 @@ import javax.inject.Singleton
 @Module
 class DatabaseModule {
     @Provides
-    @Singleton
     fun provideRepository() = MainRepository()
 }
