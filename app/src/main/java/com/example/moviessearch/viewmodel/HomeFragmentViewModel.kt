@@ -15,10 +15,6 @@ class HomeFragmentViewModel : ViewModel() {
     lateinit var interactor: Interactor
 
 
-//    private var interactor: Interactor = App.instance.interactor
-//    val filmLiveData = MutableLiveData<Film>()
-//    private var getFilmDescriptionFromApi: GetFilmDescriptionFromApi = App.instance.getFilmDescriptionFromApi
-
     init {
         App.instance.dagger.inject(this)
         interactor.getFilmsFromApi(1, object : ApiCallBack {
@@ -27,7 +23,6 @@ class HomeFragmentViewModel : ViewModel() {
             }
 
             override fun onFailure() {
-//                println("!!!! ApiCallBack interface in HomeFragmentViewModel is onFailure")
             }
         })
 
@@ -37,10 +32,5 @@ class HomeFragmentViewModel : ViewModel() {
         fun onSuccess(films: List<Film>)
         fun onFailure()
     }
-
-//    interface ApiFilmCallBack {
-//        fun onSuccess(filmDescription: String)
-//        fun onFailure()
-//    }
 
 }

@@ -10,12 +10,7 @@ import com.example.moviessearch.utils.AnimationHelper
 import com.megamovies.moviessearch.databinding.FragmentFavoritesBinding
 
 class FavoritesFragment : Fragment() {
-//    init {
-//        enterTransition = Slide(Gravity.END).apply { duration = 500; mode = Slide.MODE_IN }
-//        returnTransition = Slide(Gravity.END).apply { duration = 500;mode = Slide.MODE_OUT }
-//        exitTransition = Slide(Gravity.START).apply { duration = 500;mode = Slide.MODE_OUT }
-//
-//    }
+
     val favoritesList: MutableList<Film> = mutableListOf()
     private lateinit var binding: FragmentFavoritesBinding
 
@@ -24,7 +19,6 @@ class FavoritesFragment : Fragment() {
         container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
-//        return super.onCreateView(inflater, container, savedInstanceState)
         binding = FragmentFavoritesBinding.inflate(inflater, container, false)
         return binding.root
     }

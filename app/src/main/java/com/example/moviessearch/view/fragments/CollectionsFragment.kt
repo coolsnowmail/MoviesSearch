@@ -16,12 +16,7 @@ private const val ARG_PARAM2 = "param2"
  * create an instance of this fragment.
  */
 class CollectionsFragment : Fragment() {
-//    init {
-//        enterTransition = Slide(Gravity.END).apply { duration = 500; mode = Slide.MODE_IN }
-//        returnTransition = Slide(Gravity.END).apply { duration = 500;mode = Slide.MODE_OUT }
-//        exitTransition = Slide(Gravity.START).apply { duration = 500;mode = Slide.MODE_OUT }
-//
-//    }
+
     // TODO: Rename and change types of parameters
     private var param1: String? = null
     private var param2: String? = null
@@ -38,7 +33,7 @@ class CollectionsFragment : Fragment() {
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
-        // Inflate the layout for this fragment
+
         return inflater.inflate(R.layout.fragment_collections, container, false)
     }
 

@@ -49,20 +49,6 @@ class DetailsFragment : Fragment() {
     init {
         App.instance.dagger.inject(this)
     }
-//    init {
-//        getFilmDescriptionFromApi.getFilmsFromApi(
-//            film.id,
-//            object : DetailsFragment.ApiFilmCallBack {
-//                override fun onSuccess(filmDescription: String) {
-//                    filmLiveData.postValue(filmDescription)
-//                }
-//
-//                override fun onFailure() {
-//                    println("!!!! ApiCallBack interface in HomeFragmentViewModel is onFailure")
-//                }
-//
-//            })
-//    }
 
     override fun onCreateView(
         inflater: LayoutInflater,

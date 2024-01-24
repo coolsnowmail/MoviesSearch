@@ -28,10 +28,6 @@ import com.megamovies.moviessearch.databinding.MergeHomeScreenContentBinding
 
 
 class HomeFragment : Fragment() {
-//    init {
-//        exitTransition = Slide(Gravity.START).apply { duration = 500;mode = Slide.MODE_OUT }
-//        reenterTransition = Slide(Gravity.START).apply { duration = 500; }
-//    }
 
     private lateinit var binding: FragmentHomeBinding
     private lateinit var mergebinding: MergeHomeScreenContentBinding

@@ -37,8 +37,6 @@ class MainActivity : AppCompatActivity() {
                 null
             )
             .commit()
-
-
     }
 
     var backPressed = 0L
