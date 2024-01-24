@@ -6,14 +6,21 @@ import com.example.moviessearch.App
 import com.example.moviessearch.data.internet.individual_film.GetFilmDescriptionFromApi
 import com.example.moviessearch.domain.Film
 import com.example.moviessearch.domain.Interactor
+import javax.inject.Inject
 
 class HomeFragmentViewModel : ViewModel() {
     val filmListLiveData = MutableLiveData<List<Film>>()
-    private var interactor: Interactor = App.instance.interactor
+
+    @Inject
+    lateinit var interactor: Interactor
+
+
+//    private var interactor: Interactor = App.instance.interactor
 //    val filmLiveData = MutableLiveData<Film>()
 //    private var getFilmDescriptionFromApi: GetFilmDescriptionFromApi = App.instance.getFilmDescriptionFromApi
 
     init {
+        App.instance.dagger.inject(this)
         interactor.getFilmsFromApi(1, object : ApiCallBack {
             override fun onSuccess(films: List<Film>) {
                 filmListLiveData.postValue(films)

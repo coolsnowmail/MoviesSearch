@@ -2,9 +2,9 @@ plugins {
     id 'com.android.application'
     id 'org.jetbrains.kotlin.android'
     id 'kotlin-parcelize'
+    id 'kotlin-kapt'
 }
 
-apply plugin: 'kotlin-kapt'
 
 android {
     namespace 'com.megamovies.moviessearch'

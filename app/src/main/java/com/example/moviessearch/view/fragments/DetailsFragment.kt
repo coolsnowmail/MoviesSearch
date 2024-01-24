@@ -30,6 +30,7 @@ import retrofit2.Response
 import retrofit2.Retrofit
 import retrofit2.converter.gson.GsonConverterFactory
 import java.util.concurrent.TimeUnit
+import javax.inject.Inject
 
 
 class DetailsFragment : Fragment() {
@@ -40,10 +41,14 @@ class DetailsFragment : Fragment() {
 //    }
     private lateinit var binding: FragmentDetailsBinding
     val filmLiveData = MutableLiveData<String>()
-    private var getFilmDescriptionFromApi: GetFilmDescriptionFromApi =
-        App.instance.getFilmDescriptionFromApi
+//    private var getFilmDescriptionFromApi: GetFilmDescriptionFromApi =
+//        App.instance.getFilmDescriptionFromApi
+    @Inject
+    lateinit var getFilmDescriptionFromApi: GetFilmDescriptionFromApi
 
-
+    init {
+        App.instance.dagger.inject(this)
+    }
 //    init {
 //        getFilmDescriptionFromApi.getFilmsFromApi(
 //            film.id,
