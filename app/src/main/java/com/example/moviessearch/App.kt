@@ -7,6 +7,7 @@ import com.example.moviessearch.data.internet.individual_film.GetFilmDescription
 import com.example.moviessearch.di.AppComponent
 import com.example.moviessearch.domain.Interactor
 import com.megamovies.moviessearch.BuildConfig
+import dagger.internal.DaggerCollections
 import okhttp3.OkHttpClient
 import okhttp3.logging.HttpLoggingInterceptor
 import retrofit2.Retrofit
@@ -19,7 +20,7 @@ class App : Application() {
     override fun onCreate() {
         super.onCreate()
         instance = this
-//        dagger = Dagger
+//        dagger = DaggerAppComponent.create()
     }
 
     companion object {
